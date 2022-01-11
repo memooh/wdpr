@@ -37,5 +37,15 @@ namespace wdpr.Controllers
         public async Task<IActionResult> LeeftijdVragenAanmelden(){
             return View();
         }
+
+        public async Task<IActionResult> Diensten(){
+            return View();
+        }
+
+        public async Task<IActionResult> OverOns(){
+            return View();
+        }
+
+
     }
 }

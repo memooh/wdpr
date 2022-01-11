@@ -147,3 +147,4 @@ C:\Users\troys\OneDrive\Documents\GitHub\wdpr\obj\Debug\net5.0\Razor\Views\Gebru
 C:\Users\troys\OneDrive\Documents\GitHub\wdpr\obj\Debug\net5.0\Razor\Views\Gebruiker\Edit.cshtml.g.cs
 C:\Users\troys\OneDrive\Documents\GitHub\wdpr\obj\Debug\net5.0\Razor\Views\Gebruiker\Index.cshtml.g.cs
 C:\Users\troys\OneDrive\Documents\GitHub\wdpr\obj\Debug\net5.0\Razor\Views\Home\LeeftijdVragenAanmelden.cshtml.g.cs
+C:\Users\troys\OneDrive\Documents\GitHub\wdpr\obj\Debug\net5.0\Razor\Views\Home\OverOns.cshtml.g.cs
