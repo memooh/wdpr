@@ -15629,6 +15629,26 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Gebruiker\\Create.cshtml",
+      "TargetPath": "Views\\Gebruiker\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Gebruiker\\Index.cshtml",
+      "TargetPath": "Views\\Gebruiker\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Gebruiker\\Details.cshtml",
+      "TargetPath": "Views\\Gebruiker\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Home\\LeeftijdVragenAanmelden.cshtml",
+      "TargetPath": "Views\\Home\\LeeftijdVragenAanmelden.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
@@ -15639,8 +15659,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Gebruiker\\Delete.cshtml",
+      "TargetPath": "Views\\Gebruiker\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Gebruiker\\Edit.cshtml",
+      "TargetPath": "Views\\Gebruiker\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
