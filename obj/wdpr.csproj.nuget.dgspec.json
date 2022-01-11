@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\wdpr.csproj": {}
+    "C:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\wdpr.csproj": {}
   },
   "projects": {
-    "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\wdpr.csproj": {
+    "C:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\wdpr.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\wdpr.csproj",
+        "projectUniqueName": "C:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\wdpr.csproj",
         "projectName": "wdpr",
-        "projectPath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\wdpr.csproj",
+        "projectPath": "C:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\wdpr.csproj",
         "packagesPath": "C:\\Users\\troys\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\obj\\",
+        "outputPath": "C:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\troys\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,28 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -57,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     }
