@@ -15619,6 +15619,11 @@
   "RootNamespace": "wdpr",
   "Documents": [
     {
+      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Home\\Diensten.cshtml",
+      "TargetPath": "Views\\Home\\Diensten.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
@@ -15656,6 +15661,11 @@
     {
       "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Home\\OverOns.cshtml",
+      "TargetPath": "Views\\Home\\OverOns.cshtml",
       "FileKind": "mvc"
     },
     {
