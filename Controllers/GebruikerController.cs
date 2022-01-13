@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using wdpr;
+using Models;
 
 namespace wdpr.Controllers
 {
@@ -21,7 +21,7 @@ namespace wdpr.Controllers
         // GET: Gebruiker
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Gebruiker.ToListAsync());
+            return View(await _context.Gebruikers.ToListAsync());
         }
 
         // GET: Gebruiker/Details/5
@@ -32,7 +32,7 @@ namespace wdpr.Controllers
                 return NotFound();
             }
 
-            var gebruiker = await _context.Gebruiker
+            var gebruiker = await _context.Gebruikers
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (gebruiker == null)
             {
@@ -53,7 +53,7 @@ namespace wdpr.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Voornaam,Achternaam,Leeftijd,Moderator,Orthopedagoog,Client,Stagair,Administratie")] Gebruiker gebruiker)
+        public async Task<IActionResult> Create([Bind("Id,Gebruikersnaam,Wachtwoord,Email,Geboortedatum")] Gebruiker gebruiker)
         {
             if (ModelState.IsValid)
             {
@@ -72,7 +72,7 @@ namespace wdpr.Controllers
                 return NotFound();
             }
 
-            var gebruiker = await _context.Gebruiker.FindAsync(id);
+            var gebruiker = await _context.Gebruikers.FindAsync(id);
             if (gebruiker == null)
             {
                 return NotFound();
@@ -85,7 +85,7 @@ namespace wdpr.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Voornaam,Achternaam,Moderator,Orthopedagoog,Client,Stagair,Administratie")] Gebruiker gebruiker)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Gebruikersnaam,Wachtwoord,Email,Geboortedatum")] Gebruiker gebruiker)
         {
             if (id != gebruiker.Id)
             {
@@ -123,7 +123,7 @@ namespace wdpr.Controllers
                 return NotFound();
             }
 
-            var gebruiker = await _context.Gebruiker
+            var gebruiker = await _context.Gebruikers
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (gebruiker == null)
             {
@@ -138,16 +138,15 @@ namespace wdpr.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var gebruiker = await _context.Gebruiker.FindAsync(id);
-            _context.Gebruiker.Remove(gebruiker);
+            var gebruiker = await _context.Gebruikers.FindAsync(id);
+            _context.Gebruikers.Remove(gebruiker);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool GebruikerExists(int id)
         {
-            return _context.Gebruiker.Any(e => e.Id == id);
+            return _context.Gebruikers.Any(e => e.Id == id);
         }
-
     }
 }

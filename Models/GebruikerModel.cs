@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace wdpr
 {
 
-    public class Gebruiker
+    public class GebruikerModel
     {
         [Key]
         public int Id { get; set; }
