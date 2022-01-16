@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\wdpr.csproj",
+  "FilePath": "d:\\school\\wdpr\\wdpr.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "5.0",
@@ -15619,78 +15619,103 @@
   "RootNamespace": "wdpr",
   "Documents": [
     {
-      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Home\\Diensten.cshtml",
-      "TargetPath": "Views\\Home\\Diensten.cshtml",
+      "FilePath": "d:\\school\\wdpr\\Views\\Zelfhulpgroep\\Edit.cshtml",
+      "TargetPath": "Views\\Zelfhulpgroep\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Home\\Index.cshtml",
-      "TargetPath": "Views\\Home\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Shared\\Error.cshtml",
-      "TargetPath": "Views\\Shared\\Error.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Gebruiker\\Create.cshtml",
+      "FilePath": "d:\\school\\wdpr\\Views\\Gebruiker\\Create.cshtml",
       "TargetPath": "Views\\Gebruiker\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Gebruiker\\Index.cshtml",
-      "TargetPath": "Views\\Gebruiker\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Gebruiker\\Details.cshtml",
-      "TargetPath": "Views\\Gebruiker\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Home\\LeeftijdVragenAanmelden.cshtml",
-      "TargetPath": "Views\\Home\\LeeftijdVragenAanmelden.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Shared\\_Layout.cshtml",
-      "TargetPath": "Views\\Shared\\_Layout.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\_ViewStart.cshtml",
-      "TargetPath": "Views\\_ViewStart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Home\\OverOns.cshtml",
-      "TargetPath": "Views\\Home\\OverOns.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Gebruiker\\Delete.cshtml",
-      "TargetPath": "Views\\Gebruiker\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Gebruiker\\Edit.cshtml",
+      "FilePath": "d:\\school\\wdpr\\Views\\Gebruiker\\Edit.cshtml",
       "TargetPath": "Views\\Gebruiker\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Home\\Privacy.cshtml",
+      "FilePath": "d:\\school\\wdpr\\Views\\Gebruiker\\Delete.cshtml",
+      "TargetPath": "Views\\Gebruiker\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\school\\wdpr\\Views\\Zelfhulpgroep\\Details.cshtml",
+      "TargetPath": "Views\\Zelfhulpgroep\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\school\\wdpr\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\school\\wdpr\\Views\\_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\school\\wdpr\\Views\\Home\\Index.cshtml",
+      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\school\\wdpr\\Views\\Gebruiker\\Index.cshtml",
+      "TargetPath": "Views\\Gebruiker\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\school\\wdpr\\Views\\Shared\\_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\school\\wdpr\\Views\\Home\\OverOns.cshtml",
+      "TargetPath": "Views\\Home\\OverOns.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\school\\wdpr\\Views\\Home\\Privacy.cshtml",
       "TargetPath": "Views\\Home\\Privacy.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\_ViewImports.cshtml",
+      "FilePath": "d:\\school\\wdpr\\Views\\Zelfhulpgroep\\Index.cshtml",
+      "TargetPath": "Views\\Zelfhulpgroep\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\school\\wdpr\\Views\\Shared\\Error.cshtml",
+      "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\school\\wdpr\\Views\\Zelfhulpgroep\\Delete.cshtml",
+      "TargetPath": "Views\\Zelfhulpgroep\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\school\\wdpr\\Views\\Home\\Diensten.cshtml",
+      "TargetPath": "Views\\Home\\Diensten.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\school\\wdpr\\Views\\Gebruiker\\Details.cshtml",
+      "TargetPath": "Views\\Gebruiker\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\school\\wdpr\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\school\\wdpr\\Views\\Home\\LeeftijdVragenAanmelden.cshtml",
+      "TargetPath": "Views\\Home\\LeeftijdVragenAanmelden.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\school\\wdpr\\Views\\Zelfhulpgroep\\Create.cshtml",
+      "TargetPath": "Views\\Zelfhulpgroep\\Create.cshtml",
       "FileKind": "mvc"
     }
   ],
