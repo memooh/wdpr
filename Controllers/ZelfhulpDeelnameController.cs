@@ -2,43 +2,29 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using PagedList.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Models;
 
 namespace wdpr.Controllers
 {
-    public class ZelfhulpgroepController : Controller
+    public class ZelfhulpDeelnameController : Controller
     {
         private readonly KliniekContext _context;
 
-        public ZelfhulpgroepController(KliniekContext context)
+        public ZelfhulpDeelnameController(KliniekContext context)
         {
             _context = context;
         }
 
-        // GET: Zelfhulpgroep
-        public async Task<IActionResult> Index(string searchString)
+        // GET: ZelfhulpDeelname
+        public async Task<IActionResult> Index()
         {
-
-            var person = from p in _context.Zelfhulpgroepen select p;
-
-            ViewBag.CurrentFilter = searchString;
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                person = person.Where(s => s.Naam.Contains(searchString) || s.avgLeeftijd.Contains(searchString));
-            }
-                
-            return View(person.ToList());
-        
+            return View(await _context.ZelfhulpDeelnames.ToListAsync());
         }
 
-        // GET: Zelfhulpgroep/Details/5
-        [Authorize(Roles = "Hulpverlener")]
+        // GET: ZelfhulpDeelname/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -46,42 +32,39 @@ namespace wdpr.Controllers
                 return NotFound();
             }
 
-            var zelfhulpgroep = await _context.Zelfhulpgroepen
+            var zelfhulpDeelname = await _context.ZelfhulpDeelnames
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (zelfhulpgroep == null)
+            if (zelfhulpDeelname == null)
             {
                 return NotFound();
             }
 
-            return View(zelfhulpgroep);
+            return View(zelfhulpDeelname);
         }
 
-        // GET: Zelfhulpgroep/Create
-        [Authorize(Roles = "Hulpverlener")]
+        // GET: ZelfhulpDeelname/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Zelfhulpgroep/Create
+        // POST: ZelfhulpDeelname/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize(Roles = "Hulpverlener")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Naam,Description,avgLeeftijd")] Zelfhulpgroep zelfhulpgroep)
+        public async Task<IActionResult> Create([Bind("Id,Toetredingsdatum")] ZelfhulpDeelname zelfhulpDeelname)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(zelfhulpgroep);
+                _context.Add(zelfhulpDeelname);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(zelfhulpgroep);
+            return View(zelfhulpDeelname);
         }
 
-        // GET: Zelfhulpgroep/Edit/5
-        [Authorize(Roles = "Hulpverlener")]
+        // GET: ZelfhulpDeelname/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -89,23 +72,22 @@ namespace wdpr.Controllers
                 return NotFound();
             }
 
-            var zelfhulpgroep = await _context.Zelfhulpgroepen.FindAsync(id);
-            if (zelfhulpgroep == null)
+            var zelfhulpDeelname = await _context.ZelfhulpDeelnames.FindAsync(id);
+            if (zelfhulpDeelname == null)
             {
                 return NotFound();
             }
-            return View(zelfhulpgroep);
+            return View(zelfhulpDeelname);
         }
 
-        // POST: Zelfhulpgroep/Edit/5
+        // POST: ZelfhulpDeelname/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize(Roles = "Hulpverlener")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Naam,Description,avgLeeftijd")] Zelfhulpgroep zelfhulpgroep)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Toetredingsdatum")] ZelfhulpDeelname zelfhulpDeelname)
         {
-            if (id != zelfhulpgroep.Id)
+            if (id != zelfhulpDeelname.Id)
             {
                 return NotFound();
             }
@@ -114,12 +96,12 @@ namespace wdpr.Controllers
             {
                 try
                 {
-                    _context.Update(zelfhulpgroep);
+                    _context.Update(zelfhulpDeelname);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ZelfhulpgroepExists(zelfhulpgroep.Id))
+                    if (!ZelfhulpDeelnameExists(zelfhulpDeelname.Id))
                     {
                         return NotFound();
                     }
@@ -130,11 +112,10 @@ namespace wdpr.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(zelfhulpgroep);
+            return View(zelfhulpDeelname);
         }
 
-        // GET: Zelfhulpgroep/Delete/5
-        [Authorize(Roles = "Hulpverlener")]
+        // GET: ZelfhulpDeelname/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -142,31 +123,30 @@ namespace wdpr.Controllers
                 return NotFound();
             }
 
-            var zelfhulpgroep = await _context.Zelfhulpgroepen
+            var zelfhulpDeelname = await _context.ZelfhulpDeelnames
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (zelfhulpgroep == null)
+            if (zelfhulpDeelname == null)
             {
                 return NotFound();
             }
 
-            return View(zelfhulpgroep);
+            return View(zelfhulpDeelname);
         }
 
-        // POST: Zelfhulpgroep/Delete/5
-        [Authorize(Roles = "Hulpverlener")]
+        // POST: ZelfhulpDeelname/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var zelfhulpgroep = await _context.Zelfhulpgroepen.FindAsync(id);
-            _context.Zelfhulpgroepen.Remove(zelfhulpgroep);
+            var zelfhulpDeelname = await _context.ZelfhulpDeelnames.FindAsync(id);
+            _context.ZelfhulpDeelnames.Remove(zelfhulpDeelname);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ZelfhulpgroepExists(int id)
+        private bool ZelfhulpDeelnameExists(int id)
         {
-            return _context.Zelfhulpgroepen.Any(e => e.Id == id);
+            return _context.ZelfhulpDeelnames.Any(e => e.Id == id);
         }
     }
 }

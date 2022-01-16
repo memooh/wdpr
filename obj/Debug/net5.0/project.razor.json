@@ -15744,6 +15744,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\school\\wdpr\\Views\\ZelfhulpDeelname\\Edit.cshtml",
+      "TargetPath": "Views\\ZelfhulpDeelname\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\school\\wdpr\\Views\\Shared\\_LoginPartial.cshtml",
       "TargetPath": "Views\\Shared\\_LoginPartial.cshtml",
       "FileKind": "mvc"
@@ -15759,6 +15764,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\school\\wdpr\\Views\\ZelfhulpDeelname\\Create.cshtml",
+      "TargetPath": "Views\\ZelfhulpDeelname\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\school\\wdpr\\Areas\\Identity\\Pages\\Account\\Manage\\ChangePassword.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\ChangePassword.cshtml",
       "FileKind": "mvc"
@@ -15771,6 +15781,11 @@
     {
       "FilePath": "d:\\school\\wdpr\\Areas\\Identity\\Pages\\Account\\Manage\\DownloadPersonalData.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\DownloadPersonalData.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\school\\wdpr\\Views\\ZelfhulpDeelname\\Details.cshtml",
+      "TargetPath": "Views\\ZelfhulpDeelname\\Details.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15834,6 +15849,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\school\\wdpr\\Views\\ZelfhulpDeelname\\Index.cshtml",
+      "TargetPath": "Views\\ZelfhulpDeelname\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\school\\wdpr\\Views\\Home\\LeeftijdVragenAanmelden.cshtml",
       "TargetPath": "Views\\Home\\LeeftijdVragenAanmelden.cshtml",
       "FileKind": "mvc"
@@ -15856,6 +15876,11 @@
     {
       "FilePath": "d:\\school\\wdpr\\Areas\\Identity\\Pages\\Account\\Manage\\GenerateRecoveryCodes.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\GenerateRecoveryCodes.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\school\\wdpr\\Views\\ZelfhulpDeelname\\Delete.cshtml",
+      "TargetPath": "Views\\ZelfhulpDeelname\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {

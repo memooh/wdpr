@@ -10,12 +10,15 @@
     <a asp-action="Create">Create New</a>
 </p>
 
-<p>
-    @using (@Html.BeginForm())
-    {
-        @Html.TextBox("search") <input type="submit" value="search" />
-    }
-</p>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" name="searchString" value="@ViewBag.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </p>
+    </div>
+</form>
 
 
 @* <div class="container">

@@ -2,14 +2,16 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace wdpr.Migrations
 {
     [DbContext(typeof(KliniekContext))]
-    partial class KliniekContextModelSnapshot : ModelSnapshot
+    [Migration("20220116144017_yolowaterpolotest")]
+    partial class yolowaterpolotest
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,15 +45,15 @@ namespace wdpr.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c90947b3-36e8-425c-81f5-5c4aa35a0f8e",
-                            ConcurrencyStamp = "feb69325-624e-41e8-ab0d-964e781b382c",
+                            Id = "46688ee5-d068-4b26-829e-06bcfb0ce221",
+                            ConcurrencyStamp = "d043e171-c6bf-47e7-a64d-07b7e42db8d3",
                             Name = "Hulpverlener",
                             NormalizedName = "HULPVERLENER"
                         },
                         new
                         {
-                            Id = "21f3d531-268c-4973-9c0c-690cf493b95d",
-                            ConcurrencyStamp = "55384ab9-d710-439e-85cc-4426a5c0d62b",
+                            Id = "cd22265e-8678-4d8b-8589-07445af68620",
+                            ConcurrencyStamp = "23dcc76d-a994-42eb-a51c-a7c8e441e1e6",
                             Name = "Patient",
                             NormalizedName = "PATIENT"
                         });
@@ -407,9 +409,6 @@ namespace wdpr.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Naam")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("avgLeeftijd")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

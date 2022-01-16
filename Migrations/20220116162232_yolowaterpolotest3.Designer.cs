@@ -2,14 +2,16 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace wdpr.Migrations
 {
     [DbContext(typeof(KliniekContext))]
-    partial class KliniekContextModelSnapshot : ModelSnapshot
+    [Migration("20220116162232_yolowaterpolotest3")]
+    partial class yolowaterpolotest3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,15 +45,15 @@ namespace wdpr.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c90947b3-36e8-425c-81f5-5c4aa35a0f8e",
-                            ConcurrencyStamp = "feb69325-624e-41e8-ab0d-964e781b382c",
+                            Id = "6b561d3b-9c3d-4cad-a622-8dfa72901017",
+                            ConcurrencyStamp = "37ee5d68-b25a-48d7-8885-61aa696c4a24",
                             Name = "Hulpverlener",
                             NormalizedName = "HULPVERLENER"
                         },
                         new
                         {
-                            Id = "21f3d531-268c-4973-9c0c-690cf493b95d",
-                            ConcurrencyStamp = "55384ab9-d710-439e-85cc-4426a5c0d62b",
+                            Id = "f64f0624-53f9-466e-8430-ebde265edef9",
+                            ConcurrencyStamp = "71af6191-43b2-429f-87c7-5e3d8d1d296f",
                             Name = "Patient",
                             NormalizedName = "PATIENT"
                         });
@@ -409,8 +411,8 @@ namespace wdpr.Migrations
                     b.Property<string>("Naam")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("avgLeeftijd")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("avgLeeftijd")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 

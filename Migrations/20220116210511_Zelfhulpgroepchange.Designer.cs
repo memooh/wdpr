@@ -2,14 +2,16 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace wdpr.Migrations
 {
     [DbContext(typeof(KliniekContext))]
-    partial class KliniekContextModelSnapshot : ModelSnapshot
+    [Migration("20220116210511_Zelfhulpgroepchange")]
+    partial class Zelfhulpgroepchange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
