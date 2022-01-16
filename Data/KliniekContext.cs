@@ -15,3 +15,10 @@ public class KliniekContext : DbContext
         public DbSet<ZelfhulpDeelname> ZelfhulpDeelnames {get; set;}
         public DbSet<Zelfhulpgroep> Zelfhulpgroepen {get; set;}
     }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+    {
+        builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "Hulpverlener", NormalizedName = "HULPVERLENER", Id = Guid.NewGuid().ToString(), ConcurrencyStamp = Guid.NewGuid().ToString() });
+        builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "Patient", NormalizedName = "PATIENT", Id = Guid.NewGuid().ToString(), ConcurrencyStamp = Guid.NewGuid().ToString() });
+        base.OnModelCreating(builder);
+    }
