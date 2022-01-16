@@ -326,3 +326,8 @@ D:\school\wdpr\obj\Debug\net5.0\Razor\Views\Zelfhulpgroep\Delete.cshtml.g.cs
 D:\school\wdpr\obj\Debug\net5.0\Razor\Views\Zelfhulpgroep\Details.cshtml.g.cs
 D:\school\wdpr\obj\Debug\net5.0\Razor\Views\Zelfhulpgroep\Edit.cshtml.g.cs
 D:\school\wdpr\obj\Debug\net5.0\Razor\Views\Zelfhulpgroep\Index.cshtml.g.cs
+D:\school\wdpr\bin\Debug\net5.0\wdpr.StaticWebAssets.xml
+D:\school\wdpr\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\school\wdpr\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.UI.Views.V4.dll
+D:\school\wdpr\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.UI.dll
+D:\school\wdpr\obj\Debug\net5.0\wdpr.MvcApplicationPartsAssemblyInfo.cs
