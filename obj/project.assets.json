@@ -7790,11 +7790,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\school\\wdpr\\wdpr.csproj",
+      "projectUniqueName": "d:\\school\\wdpr\\wdpr.csproj",
       "projectName": "wdpr",
-      "projectPath": "D:\\school\\wdpr\\wdpr.csproj",
+      "projectPath": "d:\\school\\wdpr\\wdpr.csproj",
       "packagesPath": "C:\\Users\\movdb\\.nuget\\packages\\",
-      "outputPath": "D:\\school\\wdpr\\obj\\",
+      "outputPath": "d:\\school\\wdpr\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\movdb\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -7875,5 +7875,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file d:\\school\\wdpr\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

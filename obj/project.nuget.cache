@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iHhGq59H7crQbmZgwoIwzZiOdwf0OAUBfCGm0uKNGKUNx8Fl/T4wEmybIXCb85Mq/t2St5Zu28nLppm2CAiRyQ==",
+  "dgSpecHash": "kxfOIDhTHEkcRNgzETTRxgKPiRlw8IrSjlgkswyTW3siTmTdltPTjaiYSrJtZm7N7H7X7DOxuhcji/08eRId/Q==",
   "success": true,
-  "projectFilePath": "D:\\school\\wdpr\\wdpr.csproj",
+  "projectFilePath": "d:\\school\\wdpr\\wdpr.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\movdb\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\movdb\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.0\\microsoft.aspnetcore.cryptography.internal.5.0.0.nupkg.sha512",
@@ -146,5 +146,12 @@
     "C:\\Users\\movdb\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\movdb\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file d:\\school\\wdpr\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
