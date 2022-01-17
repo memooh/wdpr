@@ -1,7 +1,8 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Models;
 
-public class KliniekContext : DbContext
+public class KliniekContext : IdentityDbContext
     {
         public KliniekContext (DbContextOptions<KliniekContext> options): base(options){}
 
