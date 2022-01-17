@@ -1,4 +1,4 @@
-@model IEnumerable<wdpr.Gebruiker>
+@model IEnumerable<Models.Gebruiker>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,28 +13,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Voornaam)
+                @Html.DisplayNameFor(model => model.Gebruikersnaam)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Achternaam)
+                @Html.DisplayNameFor(model => model.Wachtwoord)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Leeftijd)
+                @Html.DisplayNameFor(model => model.Email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Moderator)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Orthopedagoog)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Client)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Stagair)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Administratie)
+                @Html.DisplayNameFor(model => model.Geboortedatum)
             </th>
             <th></th>
         </tr>
@@ -43,28 +31,16 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Voornaam)
+                @Html.DisplayFor(modelItem => item.Gebruikersnaam)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Achternaam)
+                @Html.DisplayFor(modelItem => item.Wachtwoord)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Leeftijd)
+                @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Moderator)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Orthopedagoog)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Client)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Stagair)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Administratie)
+                @Html.DisplayFor(modelItem => item.Geboortedatum)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
