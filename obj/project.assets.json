@@ -4459,26 +4459,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\troys\\.nuget\\packages\\": {}
+    "C:\\Users\\movdb\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\wdpr.csproj",
+      "projectUniqueName": "D:\\school\\wdpr\\wdpr.csproj",
       "projectName": "wdpr",
-      "projectPath": "C:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\wdpr.csproj",
-      "packagesPath": "C:\\Users\\troys\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\obj\\",
+      "projectPath": "D:\\school\\wdpr\\wdpr.csproj",
+      "packagesPath": "C:\\Users\\movdb\\.nuget\\packages\\",
+      "outputPath": "D:\\school\\wdpr\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\troys\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\movdb\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -4536,7 +4534,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
