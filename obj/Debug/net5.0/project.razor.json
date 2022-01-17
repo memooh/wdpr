@@ -15644,6 +15644,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Aanmelding\\Index.cshtml",
+      "TargetPath": "Views\\Aanmelding\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Gebruiker\\Details.cshtml",
       "TargetPath": "Views\\Gebruiker\\Details.cshtml",
       "FileKind": "mvc"
@@ -15676,6 +15681,11 @@
     {
       "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Aanmelding\\Create.cshtml",
+      "TargetPath": "Views\\Aanmelding\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
