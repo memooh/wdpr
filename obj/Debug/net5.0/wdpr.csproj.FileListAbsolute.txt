@@ -441,10 +441,10 @@ D:\school\wdpr\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ValidationScriptsPar
 D:\school\wdpr\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 D:\school\wdpr\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 D:\school\wdpr\obj\Debug\net5.0\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+D:\school\wdpr\bin\Debug\net5.0\PagedList.dll
+D:\school\wdpr\bin\Debug\net5.0\PagedList.Mvc.dll
 D:\school\wdpr\obj\Debug\net5.0\Razor\Views\ZelfhulpDeelname\Create.cshtml.g.cs
 D:\school\wdpr\obj\Debug\net5.0\Razor\Views\ZelfhulpDeelname\Delete.cshtml.g.cs
 D:\school\wdpr\obj\Debug\net5.0\Razor\Views\ZelfhulpDeelname\Details.cshtml.g.cs
 D:\school\wdpr\obj\Debug\net5.0\Razor\Views\ZelfhulpDeelname\Edit.cshtml.g.cs
 D:\school\wdpr\obj\Debug\net5.0\Razor\Views\ZelfhulpDeelname\Index.cshtml.g.cs
-D:\school\wdpr\bin\Debug\net5.0\PagedList.dll
-D:\school\wdpr\bin\Debug\net5.0\PagedList.Mvc.dll

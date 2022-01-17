@@ -53,14 +53,16 @@ namespace wdpr.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Toetredingsdatum")] ZelfhulpDeelname zelfhulpDeelname)
+        public async Task<IActionResult> Create([Bind("Id,Toetredingsdatum,Zelfhulpgroep,Client")] ZelfhulpDeelname zelfhulpDeelname)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(zelfhulpDeelname);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
+                if (ModelState.IsValid)
+                {
+                    _context.Add(zelfhulpDeelname);
+
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+        
             return View(zelfhulpDeelname);
         }
 
@@ -148,5 +150,6 @@ namespace wdpr.Controllers
         {
             return _context.ZelfhulpDeelnames.Any(e => e.Id == id);
         }
+
     }
 }

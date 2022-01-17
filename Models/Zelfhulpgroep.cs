@@ -6,6 +6,7 @@ namespace Models {
         public string Naam { get; set; }
         public string Description { get; set;}
         public string avgLeeftijd {get; set;}
+
     }
 }
 

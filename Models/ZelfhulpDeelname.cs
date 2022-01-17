@@ -7,5 +7,6 @@ namespace Models {
         public Zelfhulpgroep Zelfhulpgroep {get; set;}
         public Gebruiker Client {get; set;}
 
+
     }
 }

@@ -2,14 +2,16 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace wdpr.Migrations
 {
     [DbContext(typeof(KliniekContext))]
-    partial class KliniekContextModelSnapshot : ModelSnapshot
+    [Migration("20220116212557_Zelfhulpgroepchange3")]
+    partial class Zelfhulpgroepchange3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,15 +45,15 @@ namespace wdpr.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "fada2d14-60df-461f-b738-694ed9cd9126",
-                            ConcurrencyStamp = "94a62104-7560-42b6-9c0e-f5de1d0c4daf",
+                            Id = "e6f1fd89-286f-45f6-8466-cb12f503e3c8",
+                            ConcurrencyStamp = "5281a345-5e4c-4e69-9daf-5260c5531668",
                             Name = "Hulpverlener",
                             NormalizedName = "HULPVERLENER"
                         },
                         new
                         {
-                            Id = "6eb41b7f-f540-4cc6-8091-d6b77c2c3580",
-                            ConcurrencyStamp = "b23dcfba-8d1b-444b-969a-eda17215b396",
+                            Id = "051172f9-55b8-4e2b-b629-0f2a3a05a126",
+                            ConcurrencyStamp = "15bdfe50-a594-4dfc-abd7-48339187a1ca",
                             Name = "Patient",
                             NormalizedName = "PATIENT"
                         });
@@ -379,20 +381,10 @@ namespace wdpr.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("ClientId")
-                        .HasColumnType("TEXT");
-
                     b.Property<DateTime>("Toetredingsdatum")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("ZelfhulpgroepId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("ClientId");
-
-                    b.HasIndex("ZelfhulpgroepId");
 
                     b.ToTable("ZelfhulpDeelnames");
                 });
@@ -409,10 +401,15 @@ namespace wdpr.Migrations
                     b.Property<string>("Naam")
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("ZelfhulpDeelnameId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("avgLeeftijd")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ZelfhulpDeelnameId");
 
                     b.ToTable("Zelfhulpgroepen");
                 });
@@ -427,7 +424,12 @@ namespace wdpr.Migrations
                     b.Property<string>("VoogdId")
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("ZelfhulpDeelnameId")
+                        .HasColumnType("INTEGER");
+
                     b.HasIndex("VoogdId");
+
+                    b.HasIndex("ZelfhulpDeelnameId");
 
                     b.HasDiscriminator().HasValue("Gebruiker");
                 });
@@ -552,19 +554,11 @@ namespace wdpr.Migrations
                     b.Navigation("Client");
                 });
 
-            modelBuilder.Entity("Models.ZelfhulpDeelname", b =>
+            modelBuilder.Entity("Models.Zelfhulpgroep", b =>
                 {
-                    b.HasOne("Models.Gebruiker", "Client")
-                        .WithMany()
-                        .HasForeignKey("ClientId");
-
-                    b.HasOne("Models.Zelfhulpgroep", "Zelfhulpgroep")
-                        .WithMany()
-                        .HasForeignKey("ZelfhulpgroepId");
-
-                    b.Navigation("Client");
-
-                    b.Navigation("Zelfhulpgroep");
+                    b.HasOne("Models.ZelfhulpDeelname", null)
+                        .WithMany("Zelfhulpgroep")
+                        .HasForeignKey("ZelfhulpDeelnameId");
                 });
 
             modelBuilder.Entity("Models.Gebruiker", b =>
@@ -573,7 +567,18 @@ namespace wdpr.Migrations
                         .WithMany()
                         .HasForeignKey("VoogdId");
 
+                    b.HasOne("Models.ZelfhulpDeelname", null)
+                        .WithMany("Client")
+                        .HasForeignKey("ZelfhulpDeelnameId");
+
                     b.Navigation("Voogd");
+                });
+
+            modelBuilder.Entity("Models.ZelfhulpDeelname", b =>
+                {
+                    b.Navigation("Client");
+
+                    b.Navigation("Zelfhulpgroep");
                 });
 #pragma warning restore 612, 618
         }
