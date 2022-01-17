@@ -13,11 +13,7 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
-<<<<<<< HEAD
 #line 1 "D:\school\wdpr\Views\_ViewImports.cshtml"
-=======
-#line 1 "C:\Users\troys\OneDrive\Documents\GitHub\wdpr\Views\_ViewImports.cshtml"
->>>>>>> origin/Inloggen
 using Models;
 
 #line default
