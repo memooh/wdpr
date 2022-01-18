@@ -8,14 +8,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace wdpr.Migrations
 {
     [DbContext(typeof(KliniekContext))]
-    [Migration("20220113172603_TestingLogin")]
-    partial class TestingLogin
+    [Migration("20220118170729_bruh25")]
+    partial class bruh25
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "5.0.2");
+                .HasAnnotation("ProductVersion", "5.0.0");
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -41,6 +41,22 @@ namespace wdpr.Migrations
                         .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "6beec4fe-491f-448f-a848-f5d9669b98fe",
+                            ConcurrencyStamp = "7bb65136-4d1d-4df8-bcdc-11a4c093acdf",
+                            Name = "Hulpverlener",
+                            NormalizedName = "HULPVERLENER"
+                        },
+                        new
+                        {
+                            Id = "124765a1-b107-4b69-bb9a-3ece79cf3921",
+                            ConcurrencyStamp = "2a44ac75-04d6-44df-965b-c18ba13862e4",
+                            Name = "Patient",
+                            NormalizedName = "PATIENT"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -76,6 +92,10 @@ namespace wdpr.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
@@ -128,6 +148,8 @@ namespace wdpr.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -218,8 +240,8 @@ namespace wdpr.Migrations
                     b.Property<string>("Achternaam")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("BehandelaarId")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("BehandelaarId")
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Datum")
                         .HasColumnType("TEXT");
@@ -246,11 +268,11 @@ namespace wdpr.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("BehandelaarId")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("BehandelaarId")
+                        .HasColumnType("TEXT");
 
-                    b.Property<int?>("ClientId")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("ClientId")
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Datum")
                         .HasColumnType("TEXT");
@@ -298,8 +320,8 @@ namespace wdpr.Migrations
                     b.Property<DateTime>("Datum")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("VerzenderId")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("VerzenderId")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -316,8 +338,8 @@ namespace wdpr.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("BehandelaarId")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("BehandelaarId")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Naam")
                         .HasColumnType("TEXT");
@@ -338,8 +360,8 @@ namespace wdpr.Migrations
                     b.Property<int?>("ChatId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("ClientId")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("ClientId")
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Toetredingsdatum")
                         .HasColumnType("TEXT");
@@ -353,54 +375,27 @@ namespace wdpr.Migrations
                     b.ToTable("Deelnames");
                 });
 
-            modelBuilder.Entity("Models.Gebruiker", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("Geboortedatum")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Gebruikersnaam")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int?>("VoogdId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Wachtwoord")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("VoogdId");
-
-                    b.ToTable("Gebruikers");
-                });
-
             modelBuilder.Entity("Models.ZelfhulpDeelname", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("ClientId")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("ClientId")
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Toetredingsdatum")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("ZelfhulpgroepId")
+                    b.Property<int>("ZelfhulpgroepId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ClientId");
 
-                    b.HasIndex("ZelfhulpgroepId");
+                    b.HasIndex("ZelfhulpgroepId")
+                        .IsUnique();
 
                     b.ToTable("ZelfhulpDeelnames");
                 });
@@ -411,12 +406,33 @@ namespace wdpr.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Naam")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("avgLeeftijd")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.ToTable("Zelfhulpgroepen");
+                });
+
+            modelBuilder.Entity("Models.Gebruiker", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
+
+                    b.Property<DateTime>("Geboortedatum")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("VoogdId")
+                        .HasColumnType("TEXT");
+
+                    b.HasIndex("VoogdId");
+
+                    b.HasDiscriminator().HasValue("Gebruiker");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -539,6 +555,23 @@ namespace wdpr.Migrations
                     b.Navigation("Client");
                 });
 
+            modelBuilder.Entity("Models.ZelfhulpDeelname", b =>
+                {
+                    b.HasOne("Models.Gebruiker", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientId");
+
+                    b.HasOne("Models.Zelfhulpgroep", "Zelfhulpgroep")
+                        .WithOne("Deelname")
+                        .HasForeignKey("Models.ZelfhulpDeelname", "ZelfhulpgroepId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Client");
+
+                    b.Navigation("Zelfhulpgroep");
+                });
+
             modelBuilder.Entity("Models.Gebruiker", b =>
                 {
                     b.HasOne("Models.Gebruiker", "Voogd")
@@ -548,19 +581,9 @@ namespace wdpr.Migrations
                     b.Navigation("Voogd");
                 });
 
-            modelBuilder.Entity("Models.ZelfhulpDeelname", b =>
+            modelBuilder.Entity("Models.Zelfhulpgroep", b =>
                 {
-                    b.HasOne("Models.Gebruiker", "Client")
-                        .WithMany()
-                        .HasForeignKey("ClientId");
-
-                    b.HasOne("Models.Zelfhulpgroep", "Zelfhulpgroep")
-                        .WithMany()
-                        .HasForeignKey("ZelfhulpgroepId");
-
-                    b.Navigation("Client");
-
-                    b.Navigation("Zelfhulpgroep");
+                    b.Navigation("Deelname");
                 });
 #pragma warning restore 612, 618
         }

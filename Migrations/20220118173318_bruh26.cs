@@ -2,36 +2,29 @@
 
 namespace wdpr.Migrations
 {
-    public partial class yolowaterpolotest3 : Migration
+    public partial class bruh26 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "46688ee5-d068-4b26-829e-06bcfb0ce221");
+                keyValue: "124765a1-b107-4b69-bb9a-3ece79cf3921");
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "cd22265e-8678-4d8b-8589-07445af68620");
-
-            migrationBuilder.AddColumn<int>(
-                name: "avgLeeftijd",
-                table: "Zelfhulpgroepen",
-                type: "INTEGER",
-                nullable: false,
-                defaultValue: 0);
+                keyValue: "6beec4fe-491f-448f-a848-f5d9669b98fe");
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "6b561d3b-9c3d-4cad-a622-8dfa72901017", "37ee5d68-b25a-48d7-8885-61aa696c4a24", "Hulpverlener", "HULPVERLENER" });
+                values: new object[] { "0a10636b-4289-41fb-9e15-0ccc77dd39b1", "2f9d0937-c7d6-4488-8939-3420229b06fc", "Hulpverlener", "HULPVERLENER" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "f64f0624-53f9-466e-8430-ebde265edef9", "71af6191-43b2-429f-87c7-5e3d8d1d296f", "Patient", "PATIENT" });
+                values: new object[] { "c6a03ab4-0961-468e-9412-038c6c9f8637", "a021ea4d-d3ce-4afa-911e-4ee78fbeb63b", "Patient", "PATIENT" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -39,26 +32,22 @@ namespace wdpr.Migrations
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "6b561d3b-9c3d-4cad-a622-8dfa72901017");
+                keyValue: "0a10636b-4289-41fb-9e15-0ccc77dd39b1");
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "f64f0624-53f9-466e-8430-ebde265edef9");
-
-            migrationBuilder.DropColumn(
-                name: "avgLeeftijd",
-                table: "Zelfhulpgroepen");
+                keyValue: "c6a03ab4-0961-468e-9412-038c6c9f8637");
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "46688ee5-d068-4b26-829e-06bcfb0ce221", "d043e171-c6bf-47e7-a64d-07b7e42db8d3", "Hulpverlener", "HULPVERLENER" });
+                values: new object[] { "6beec4fe-491f-448f-a848-f5d9669b98fe", "7bb65136-4d1d-4df8-bcdc-11a4c093acdf", "Hulpverlener", "HULPVERLENER" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "cd22265e-8678-4d8b-8589-07445af68620", "23dcc76d-a994-42eb-a51c-a7c8e441e1e6", "Patient", "PATIENT" });
+                values: new object[] { "124765a1-b107-4b69-bb9a-3ece79cf3921", "2a44ac75-04d6-44df-965b-c18ba13862e4", "Patient", "PATIENT" });
         }
     }
 }

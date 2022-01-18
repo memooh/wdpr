@@ -17,13 +17,10 @@
                 <input asp-for="Toetredingsdatum" class="form-control" />
                 <span asp-validation-for="Toetredingsdatum" class="text-danger"></span>
             </div>
-             <div class="form-group">
-            <label class="control-label col-md-2" for="DepartmentID">Department</label>
-            <div class="col-md-10">
-                @Html.DropDownList("DepartmentId", String.Empty)
-                @Html.ValidationMessageFor(model => model.Zelfhulpgroep)
+            <div class="form-group">
+                <label asp-for="ZelfhulpgroepId" class="control-label"></label>
+                <select asp-for="ZelfhulpgroepId" class ="form-control" asp-items="ViewBag.ZelfhulpgroepId"></select>
             </div>
-        </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

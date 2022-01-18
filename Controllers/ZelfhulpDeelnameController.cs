@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 using Models;
 
 namespace wdpr.Controllers
@@ -13,15 +15,19 @@ namespace wdpr.Controllers
     {
         private readonly KliniekContext _context;
 
-        public ZelfhulpDeelnameController(KliniekContext context)
+        private UserManager<IdentityUser> _userManager;
+
+        public ZelfhulpDeelnameController(KliniekContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: ZelfhulpDeelname
         public async Task<IActionResult> Index()
         {
-            return View(await _context.ZelfhulpDeelnames.ToListAsync());
+            var kliniekContext = _context.ZelfhulpDeelnames.Include(z => z.Zelfhulpgroep);
+            return View(await kliniekContext.ToListAsync());
         }
 
         // GET: ZelfhulpDeelname/Details/5
@@ -33,6 +39,7 @@ namespace wdpr.Controllers
             }
 
             var zelfhulpDeelname = await _context.ZelfhulpDeelnames
+                .Include(z => z.Zelfhulpgroep)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (zelfhulpDeelname == null)
             {
@@ -45,6 +52,7 @@ namespace wdpr.Controllers
         // GET: ZelfhulpDeelname/Create
         public IActionResult Create()
         {
+            ViewData["ZelfhulpgroepId"] = new SelectList(_context.Zelfhulpgroepen, "Id", "Naam");
             return View();
         }
 
@@ -53,16 +61,19 @@ namespace wdpr.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Toetredingsdatum,Zelfhulpgroep,Client")] ZelfhulpDeelname zelfhulpDeelname)
+        public async Task<IActionResult> Create([Bind("Id,Toetredingsdatum,ZelfhulpgroepId")] ZelfhulpDeelname zelfhulpDeelname)
         {
-                if (ModelState.IsValid)
-                {
-                    _context.Add(zelfhulpDeelname);
-
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
-                }
-        
+            // Thnx daddy Nokinsu <3
+            var cu = await _userManager.GetUserAsync(HttpContext.User);
+            // var zpp = await _context.Zelfhulpgroepen.Where(x => x.Deelname == null).ToListAsync();
+            if (ModelState.IsValid)
+            {
+                zelfhulpDeelname.Client = cu;
+                _context.Add(zelfhulpDeelname);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["ZelfhulpgroepId"] = new SelectList(_context.Zelfhulpgroepen, "Id", "Id", zelfhulpDeelname.ZelfhulpgroepId);
             return View(zelfhulpDeelname);
         }
 
@@ -79,6 +90,7 @@ namespace wdpr.Controllers
             {
                 return NotFound();
             }
+            ViewData["ZelfhulpgroepId"] = new SelectList(_context.Zelfhulpgroepen, "Id", "Id", zelfhulpDeelname.ZelfhulpgroepId);
             return View(zelfhulpDeelname);
         }
 
@@ -87,7 +99,7 @@ namespace wdpr.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Toetredingsdatum")] ZelfhulpDeelname zelfhulpDeelname)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Toetredingsdatum,ZelfhulpgroepId")] ZelfhulpDeelname zelfhulpDeelname)
         {
             if (id != zelfhulpDeelname.Id)
             {
@@ -114,6 +126,7 @@ namespace wdpr.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ZelfhulpgroepId"] = new SelectList(_context.Zelfhulpgroepen, "Id", "Id", zelfhulpDeelname.ZelfhulpgroepId);
             return View(zelfhulpDeelname);
         }
 
@@ -126,6 +139,7 @@ namespace wdpr.Controllers
             }
 
             var zelfhulpDeelname = await _context.ZelfhulpDeelnames
+                .Include(z => z.Zelfhulpgroep)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (zelfhulpDeelname == null)
             {
@@ -150,6 +164,5 @@ namespace wdpr.Controllers
         {
             return _context.ZelfhulpDeelnames.Any(e => e.Id == id);
         }
-
     }
 }

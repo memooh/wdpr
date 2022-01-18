@@ -7,6 +7,8 @@ namespace Models {
         public string Description { get; set;}
         public string avgLeeftijd {get; set;}
 
+        public ZelfhulpDeelname Deelname {get; set;}
+
     }
 }
 

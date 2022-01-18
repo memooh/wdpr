@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace wdpr.Migrations
 {
     [DbContext(typeof(KliniekContext))]
-    [Migration("20220116213232_Zelfhulpgroepchange34")]
-    partial class Zelfhulpgroepchange34
+    [Migration("20220118173318_bruh26")]
+    partial class bruh26
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -45,15 +45,15 @@ namespace wdpr.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "fada2d14-60df-461f-b738-694ed9cd9126",
-                            ConcurrencyStamp = "94a62104-7560-42b6-9c0e-f5de1d0c4daf",
+                            Id = "0a10636b-4289-41fb-9e15-0ccc77dd39b1",
+                            ConcurrencyStamp = "2f9d0937-c7d6-4488-8939-3420229b06fc",
                             Name = "Hulpverlener",
                             NormalizedName = "HULPVERLENER"
                         },
                         new
                         {
-                            Id = "6eb41b7f-f540-4cc6-8091-d6b77c2c3580",
-                            ConcurrencyStamp = "b23dcfba-8d1b-444b-969a-eda17215b396",
+                            Id = "c6a03ab4-0961-468e-9412-038c6c9f8637",
+                            ConcurrencyStamp = "a021ea4d-d3ce-4afa-911e-4ee78fbeb63b",
                             Name = "Patient",
                             NormalizedName = "PATIENT"
                         });
@@ -387,14 +387,15 @@ namespace wdpr.Migrations
                     b.Property<DateTime>("Toetredingsdatum")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("ZelfhulpgroepId")
+                    b.Property<int>("ZelfhulpgroepId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ClientId");
 
-                    b.HasIndex("ZelfhulpgroepId");
+                    b.HasIndex("ZelfhulpgroepId")
+                        .IsUnique();
 
                     b.ToTable("ZelfhulpDeelnames");
                 });
@@ -556,13 +557,15 @@ namespace wdpr.Migrations
 
             modelBuilder.Entity("Models.ZelfhulpDeelname", b =>
                 {
-                    b.HasOne("Models.Gebruiker", "Client")
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Client")
                         .WithMany()
                         .HasForeignKey("ClientId");
 
                     b.HasOne("Models.Zelfhulpgroep", "Zelfhulpgroep")
-                        .WithMany()
-                        .HasForeignKey("ZelfhulpgroepId");
+                        .WithOne("Deelname")
+                        .HasForeignKey("Models.ZelfhulpDeelname", "ZelfhulpgroepId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Client");
 
@@ -576,6 +579,11 @@ namespace wdpr.Migrations
                         .HasForeignKey("VoogdId");
 
                     b.Navigation("Voogd");
+                });
+
+            modelBuilder.Entity("Models.Zelfhulpgroep", b =>
+                {
+                    b.Navigation("Deelname");
                 });
 #pragma warning restore 612, 618
         }

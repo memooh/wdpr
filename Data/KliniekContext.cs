@@ -21,6 +21,7 @@ public class KliniekContext : IdentityDbContext
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<Zelfhulpgroep>().HasOne<ZelfhulpDeelname>(z => z.Deelname).WithOne(z => z.Zelfhulpgroep).HasForeignKey<ZelfhulpDeelname>(z => z.ZelfhulpgroepId);
             builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "Hulpverlener", NormalizedName = "HULPVERLENER", Id = Guid.NewGuid().ToString(), ConcurrencyStamp = Guid.NewGuid().ToString() });
             builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "Patient", NormalizedName = "PATIENT", Id = Guid.NewGuid().ToString(), ConcurrencyStamp = Guid.NewGuid().ToString() });
             base.OnModelCreating(builder);
