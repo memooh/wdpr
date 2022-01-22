@@ -15629,6 +15629,16 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\school\\wdpr\\Views\\Gebruiker\\Create.cshtml",
+      "TargetPath": "Views\\Gebruiker\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\school\\wdpr\\Views\\Gebruiker\\Edit.cshtml",
+      "TargetPath": "Views\\Gebruiker\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\school\\wdpr\\Areas\\Identity\\Pages\\Account\\LoginWith2fa.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\LoginWith2fa.cshtml",
       "FileKind": "mvc"
@@ -15636,6 +15646,11 @@
     {
       "FilePath": "d:\\school\\wdpr\\Areas\\Identity\\Pages\\Account\\Lockout.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\Lockout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\school\\wdpr\\Views\\Gebruiker\\Delete.cshtml",
+      "TargetPath": "Views\\Gebruiker\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15656,6 +15671,11 @@
     {
       "FilePath": "d:\\school\\wdpr\\Views\\_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\school\\wdpr\\Views\\Moderator\\overzichtBehandelaars.cshtml",
+      "TargetPath": "Views\\Moderator\\overzichtBehandelaars.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15701,6 +15721,11 @@
     {
       "FilePath": "d:\\school\\wdpr\\Areas\\Identity\\Pages\\Account\\Manage\\ShowRecoveryCodes.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\ShowRecoveryCodes.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\school\\wdpr\\Views\\Gebruiker\\Index.cshtml",
+      "TargetPath": "Views\\Gebruiker\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15836,6 +15861,11 @@
     {
       "FilePath": "d:\\school\\wdpr\\Areas\\Identity\\Pages\\Account\\ConfirmEmail.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\ConfirmEmail.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\school\\wdpr\\Views\\Gebruiker\\Details.cshtml",
+      "TargetPath": "Views\\Gebruiker\\Details.cshtml",
       "FileKind": "mvc"
     },
     {

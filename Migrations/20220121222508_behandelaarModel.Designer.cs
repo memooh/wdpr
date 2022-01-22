@@ -2,14 +2,16 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace wdpr.Migrations
 {
     [DbContext(typeof(KliniekContext))]
-    partial class KliniekContextModelSnapshot : ModelSnapshot
+    [Migration("20220121222508_behandelaarModel")]
+    partial class behandelaarModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,22 +45,22 @@ namespace wdpr.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "9092694a-5542-40d9-a1d4-1da87b54bd51",
-                            ConcurrencyStamp = "fd13a7b7-f41f-473a-ac22-9eaa190b0c64",
+                            Id = "39250f60-585f-4a0c-bb2b-5d55dc2bc589",
+                            ConcurrencyStamp = "24083cb4-960a-4cd3-91ab-0a6234e425b8",
                             Name = "Hulpverlener",
                             NormalizedName = "HULPVERLENER"
                         },
                         new
                         {
-                            Id = "89fc09c5-16ef-4908-bc8d-fbd73944ccc4",
-                            ConcurrencyStamp = "e1b2de1e-6f41-4437-842d-8ff326222f58",
+                            Id = "60ab3e44-ebb7-4d30-8e08-c9c7618128b7",
+                            ConcurrencyStamp = "f389083c-7677-4ed3-907c-8cc32e2e458b",
                             Name = "Patient",
                             NormalizedName = "PATIENT"
                         },
                         new
                         {
-                            Id = "808b7fe6-f84b-4ce5-9488-239e2731164d",
-                            ConcurrencyStamp = "d1cd977a-ae81-4e32-aa17-d928bb741946",
+                            Id = "db4eab7e-0935-42bf-806d-df4d372282bd",
+                            ConcurrencyStamp = "dc9cec95-b1b1-4d98-b8df-6955f464dd17",
                             Name = "Moderator",
                             NormalizedName = "MODERATOR"
                         });
@@ -296,6 +298,17 @@ namespace wdpr.Migrations
                     b.ToTable("Afspraken");
                 });
 
+            modelBuilder.Entity("Models.Behandelaar", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Behandelaren");
+                });
+
             modelBuilder.Entity("Models.Behandeling", b =>
                 {
                     b.Property<int>("Id")
@@ -429,8 +442,8 @@ namespace wdpr.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.Property<string>("BehandelaarId")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("BehandelaarId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Geboortedatum")
                         .HasColumnType("TEXT");
@@ -584,10 +597,11 @@ namespace wdpr.Migrations
 
             modelBuilder.Entity("Models.Gebruiker", b =>
                 {
-                    b.HasOne("Models.Gebruiker", "Behandelaar")
+                    b.HasOne("Models.Behandelaar", "Behandelaar")
                         .WithMany("Clienten")
                         .HasForeignKey("BehandelaarId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Models.Gebruiker", "Voogd")
                         .WithMany()
@@ -598,14 +612,14 @@ namespace wdpr.Migrations
                     b.Navigation("Voogd");
                 });
 
+            modelBuilder.Entity("Models.Behandelaar", b =>
+                {
+                    b.Navigation("Clienten");
+                });
+
             modelBuilder.Entity("Models.Zelfhulpgroep", b =>
                 {
                     b.Navigation("Deelname");
-                });
-
-            modelBuilder.Entity("Models.Gebruiker", b =>
-                {
-                    b.Navigation("Clienten");
                 });
 #pragma warning restore 612, 618
         }

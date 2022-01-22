@@ -2,14 +2,16 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace wdpr.Migrations
 {
     [DbContext(typeof(KliniekContext))]
-    partial class KliniekContextModelSnapshot : ModelSnapshot
+    [Migration("20220121224924_behandelaarModel4")]
+    partial class behandelaarModel4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,22 +45,22 @@ namespace wdpr.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "9092694a-5542-40d9-a1d4-1da87b54bd51",
-                            ConcurrencyStamp = "fd13a7b7-f41f-473a-ac22-9eaa190b0c64",
+                            Id = "d8716eaf-6468-490d-8274-2ae690c874a9",
+                            ConcurrencyStamp = "79c89d04-5397-445d-a5a5-a011d10f5559",
                             Name = "Hulpverlener",
                             NormalizedName = "HULPVERLENER"
                         },
                         new
                         {
-                            Id = "89fc09c5-16ef-4908-bc8d-fbd73944ccc4",
-                            ConcurrencyStamp = "e1b2de1e-6f41-4437-842d-8ff326222f58",
+                            Id = "a2b52860-91d1-4469-9f10-e87b82a13d2e",
+                            ConcurrencyStamp = "413ea522-84b3-4c67-bef7-8f6bac21f7d1",
                             Name = "Patient",
                             NormalizedName = "PATIENT"
                         },
                         new
                         {
-                            Id = "808b7fe6-f84b-4ce5-9488-239e2731164d",
-                            ConcurrencyStamp = "d1cd977a-ae81-4e32-aa17-d928bb741946",
+                            Id = "4e48c56e-4b0e-4514-bc70-ac5a8be843ea",
+                            ConcurrencyStamp = "368bfed2-08a4-4ff0-8127-e17bd13a8977",
                             Name = "Moderator",
                             NormalizedName = "MODERATOR"
                         });
@@ -296,6 +298,43 @@ namespace wdpr.Migrations
                     b.ToTable("Afspraken");
                 });
 
+            modelBuilder.Entity("Models.Behandelaar", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("BehandelaarsClientenId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("GebruikerId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GebruikerId")
+                        .IsUnique();
+
+                    b.ToTable("Behandelaren");
+                });
+
+            modelBuilder.Entity("Models.BehandelaarsClienten", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("BehandelaarId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BehandelaarId")
+                        .IsUnique();
+
+                    b.ToTable("BehandelaarsClienten");
+                });
+
             modelBuilder.Entity("Models.Behandeling", b =>
                 {
                     b.Property<int>("Id")
@@ -429,8 +468,11 @@ namespace wdpr.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.Property<string>("BehandelaarId")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("BehandelaarId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("BehandelaarsClientenId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Geboortedatum")
                         .HasColumnType("TEXT");
@@ -438,7 +480,7 @@ namespace wdpr.Migrations
                     b.Property<string>("VoogdId")
                         .HasColumnType("TEXT");
 
-                    b.HasIndex("BehandelaarId");
+                    b.HasIndex("BehandelaarsClientenId");
 
                     b.HasIndex("VoogdId");
 
@@ -526,6 +568,26 @@ namespace wdpr.Migrations
                     b.Navigation("Client");
                 });
 
+            modelBuilder.Entity("Models.Behandelaar", b =>
+                {
+                    b.HasOne("Models.Gebruiker", "Gebruiker")
+                        .WithOne("Behandelaar")
+                        .HasForeignKey("Models.Behandelaar", "GebruikerId");
+
+                    b.Navigation("Gebruiker");
+                });
+
+            modelBuilder.Entity("Models.BehandelaarsClienten", b =>
+                {
+                    b.HasOne("Models.Behandelaar", "Behandelaar")
+                        .WithOne("BehandelaarsClienten")
+                        .HasForeignKey("Models.BehandelaarsClienten", "BehandelaarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Behandelaar");
+                });
+
             modelBuilder.Entity("Models.Bericht", b =>
                 {
                     b.HasOne("Models.Chat", "Chat")
@@ -584,18 +646,29 @@ namespace wdpr.Migrations
 
             modelBuilder.Entity("Models.Gebruiker", b =>
                 {
-                    b.HasOne("Models.Gebruiker", "Behandelaar")
+                    b.HasOne("Models.BehandelaarsClienten", "BehandelaarsClienten")
                         .WithMany("Clienten")
-                        .HasForeignKey("BehandelaarId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .HasForeignKey("BehandelaarsClientenId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Models.Gebruiker", "Voogd")
                         .WithMany()
                         .HasForeignKey("VoogdId");
 
-                    b.Navigation("Behandelaar");
+                    b.Navigation("BehandelaarsClienten");
 
                     b.Navigation("Voogd");
+                });
+
+            modelBuilder.Entity("Models.Behandelaar", b =>
+                {
+                    b.Navigation("BehandelaarsClienten");
+                });
+
+            modelBuilder.Entity("Models.BehandelaarsClienten", b =>
+                {
+                    b.Navigation("Clienten");
                 });
 
             modelBuilder.Entity("Models.Zelfhulpgroep", b =>
@@ -605,7 +678,7 @@ namespace wdpr.Migrations
 
             modelBuilder.Entity("Models.Gebruiker", b =>
                 {
-                    b.Navigation("Clienten");
+                    b.Navigation("Behandelaar");
                 });
 #pragma warning restore 612, 618
         }

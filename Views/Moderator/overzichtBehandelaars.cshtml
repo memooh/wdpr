@@ -1,0 +1,45 @@
+@model IEnumerable<Models.Gebruiker>
+
+@{
+    ViewData["Title"] = "Behandelaars overzicht";
+}
+
+<h1>Behandelaars overzicht</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownClientsButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Clienten
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownClientsButton">
+                            @foreach (var client in item.Clienten)
+                            {
+                                @if (item.Clienten != null)
+                                {
+                                    <p class="dropdown-item">@client.Email</p>
+                                }
+                            }
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

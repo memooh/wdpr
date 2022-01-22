@@ -7839,11 +7839,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\school\\wdpr\\wdpr.csproj",
+      "projectUniqueName": "C:\\Users\\movdb\\Desktop\\wdpr-zelfhulpgroep\\wdpr.csproj",
       "projectName": "wdpr",
-      "projectPath": "D:\\school\\wdpr\\wdpr.csproj",
+      "projectPath": "C:\\Users\\movdb\\Desktop\\wdpr-zelfhulpgroep\\wdpr.csproj",
       "packagesPath": "C:\\Users\\movdb\\.nuget\\packages\\",
-      "outputPath": "D:\\school\\wdpr\\obj\\",
+      "outputPath": "C:\\Users\\movdb\\Desktop\\wdpr-zelfhulpgroep\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\movdb\\AppData\\Roaming\\NuGet\\NuGet.Config"

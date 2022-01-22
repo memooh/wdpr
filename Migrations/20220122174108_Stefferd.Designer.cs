@@ -2,14 +2,16 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace wdpr.Migrations
 {
     [DbContext(typeof(KliniekContext))]
-    partial class KliniekContextModelSnapshot : ModelSnapshot
+    [Migration("20220122174108_Stefferd")]
+    partial class Stefferd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,22 +45,22 @@ namespace wdpr.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "9092694a-5542-40d9-a1d4-1da87b54bd51",
-                            ConcurrencyStamp = "fd13a7b7-f41f-473a-ac22-9eaa190b0c64",
+                            Id = "b81c9070-e5c4-489a-aeb4-0fbac0d1f956",
+                            ConcurrencyStamp = "b465c794-50ef-42cb-bdc4-c72a3777ec68",
                             Name = "Hulpverlener",
                             NormalizedName = "HULPVERLENER"
                         },
                         new
                         {
-                            Id = "89fc09c5-16ef-4908-bc8d-fbd73944ccc4",
-                            ConcurrencyStamp = "e1b2de1e-6f41-4437-842d-8ff326222f58",
+                            Id = "58bcb787-c03b-4c0e-90f7-0b8209e876ca",
+                            ConcurrencyStamp = "45673fa3-5a51-4bde-b63d-455d3fca7c8e",
                             Name = "Patient",
                             NormalizedName = "PATIENT"
                         },
                         new
                         {
-                            Id = "808b7fe6-f84b-4ce5-9488-239e2731164d",
-                            ConcurrencyStamp = "d1cd977a-ae81-4e32-aa17-d928bb741946",
+                            Id = "675dfcf1-8578-4248-8e43-3e0931de077f",
+                            ConcurrencyStamp = "9a5862cd-3fb6-4000-a23e-9eb405efd06e",
                             Name = "Moderator",
                             NormalizedName = "MODERATOR"
                         });
@@ -429,7 +431,7 @@ namespace wdpr.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.Property<string>("BehandelaarId")
+                    b.Property<string>("ClientenId")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Geboortedatum")
@@ -438,7 +440,7 @@ namespace wdpr.Migrations
                     b.Property<string>("VoogdId")
                         .HasColumnType("TEXT");
 
-                    b.HasIndex("BehandelaarId");
+                    b.HasIndex("ClientenId");
 
                     b.HasIndex("VoogdId");
 
@@ -584,16 +586,13 @@ namespace wdpr.Migrations
 
             modelBuilder.Entity("Models.Gebruiker", b =>
                 {
-                    b.HasOne("Models.Gebruiker", "Behandelaar")
+                    b.HasOne("Models.Gebruiker", null)
                         .WithMany("Clienten")
-                        .HasForeignKey("BehandelaarId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .HasForeignKey("ClientenId");
 
                     b.HasOne("Models.Gebruiker", "Voogd")
                         .WithMany()
                         .HasForeignKey("VoogdId");
-
-                    b.Navigation("Behandelaar");
 
                     b.Navigation("Voogd");
                 });
