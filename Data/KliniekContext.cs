@@ -14,4 +14,15 @@ public class KliniekContext : DbContext
         public DbSet<Gebruiker> Gebruikers {get; set;}
         public DbSet<ZelfhulpDeelname> ZelfhulpDeelnames {get; set;}
         public DbSet<Zelfhulpgroep> Zelfhulpgroepen {get; set;}
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Entity<Chat>()
+            .HasOne(a => a.Zelfhulpgroep)
+            .WithOne(b => b.Chat)
+            .HasForeignKey<Chat>(b => b.ZelfhulpgroepInt)
+            .IsRequired(false);
+        }
     }

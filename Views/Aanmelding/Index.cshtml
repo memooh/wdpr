@@ -1,7 +1,7 @@
-@model IEnumerable<wdpr.Aanmelding>
+@model IEnumerable<Models.Aanmelding>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Aanmeldingen";
 }
 
 <h1>Aanmeldingen</h1>
@@ -31,6 +31,9 @@
                 @Html.DisplayNameFor(model => model.GeboorteDatum)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Voogd)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Behandelaar)
             </th>
             <th></th>
@@ -56,6 +59,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.GeboorteDatum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Voogd)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Behandelaar)
