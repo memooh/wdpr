@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mBzsc7j5Ck7B3zqJ3LfPNJca+j2NMQMsnCHzQbIcta6GzR+YdJf/iWTf7lJ7Uc33IThYhZkJLpDBvJ4HtW3Iig==",
+  "dgSpecHash": "Auhfx9CB/tKWfLDSfg+K/z4XqqsdIMdkStcGWTHVWvQVjQ7Gc50NAjM0X73rH4Ce5j5Z+3yE4WEOAPKYNG5i6g==",
   "success": true,
-  "projectFilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\wdpr.csproj",
+  "projectFilePath": "C:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\wdpr.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\troys\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\troys\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
