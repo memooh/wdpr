@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\wdpr.csproj": {}
+    "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\wdpr.csproj": {}
   },
   "projects": {
-    "C:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\wdpr.csproj": {
+    "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\wdpr.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\wdpr.csproj",
+        "projectUniqueName": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\wdpr.csproj",
         "projectName": "wdpr",
-        "projectPath": "C:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\wdpr.csproj",
+        "projectPath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\wdpr.csproj",
         "packagesPath": "C:\\Users\\troys\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\obj\\",
+        "outputPath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\troys\\AppData\\Roaming\\NuGet\\NuGet.Config",

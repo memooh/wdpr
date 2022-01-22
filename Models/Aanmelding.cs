@@ -8,6 +8,7 @@ namespace Models {
         public string Voornaam {get; set;}
         public string Achternaam {get; set;}
         public DateTime GeboorteDatum {get; set;}
+        public Gebruiker? Voogd { get; set;}
         public Gebruiker Behandelaar { get; set;}
     }
 }
