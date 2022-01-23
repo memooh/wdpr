@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Gebruiker\\Desktop\\WDPR\\wdpr.csproj": {}
+    "C:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\wdpr.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Gebruiker\\Desktop\\WDPR\\wdpr.csproj": {
+    "C:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\wdpr.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Gebruiker\\Desktop\\WDPR\\wdpr.csproj",
+        "projectUniqueName": "C:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\wdpr.csproj",
         "projectName": "wdpr",
-        "projectPath": "C:\\Users\\Gebruiker\\Desktop\\WDPR\\wdpr.csproj",
-        "packagesPath": "C:\\Users\\Gebruiker\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Gebruiker\\Desktop\\WDPR\\obj\\",
+        "projectPath": "C:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\wdpr.csproj",
+        "packagesPath": "C:\\Users\\troys\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Gebruiker\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\troys\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -73,6 +75,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[5.0.2, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.1, )"
             }
           },
           "imports": [
@@ -93,7 +99,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     }
