@@ -158,5 +158,28 @@ namespace wdpr.Controllers
             return View();
             
         }
+
+        public IActionResult Aanmelden() {
+            return View(new AanmeldingModel());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Aanmelden(AanmeldingModel aanmeldingModel) {
+
+            Aanmelding aanmelding = new Aanmelding {
+                Voornaam = aanmeldingModel.Voornaam,
+                Achternaam = aanmeldingModel.Achternaam,
+                Datum = aanmeldingModel.Datum,
+                Voogd = await _context.Gebruikers.SingleAsync(g => g.Email == aanmeldingModel.VoogdEmail),
+                Behandelaar = await _context.Gebruikers.SingleAsync(g => g.Id == aanmeldingModel.BehandelaarId),
+                GeboorteDatum = aanmeldingModel.GeboorteDatum,
+                HeeftAccount = false
+            };
+
+            _context.Aanmeldingen.Add(aanmelding);
+            _context.SaveChanges();
+            
+            return View();
+        }
     }
 }

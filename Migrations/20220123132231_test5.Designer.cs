@@ -2,14 +2,16 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace wdpr.Migrations
 {
     [DbContext(typeof(KliniekContext))]
-    partial class KliniekContextModelSnapshot : ModelSnapshot
+    [Migration("20220123132231_test5")]
+    partial class test5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -86,15 +88,15 @@ namespace wdpr.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a883fbd0-35f2-4079-98e5-96ccb9a9297c",
-                            ConcurrencyStamp = "9aeb695c-7e80-4eba-87f9-2f4f8b64f272",
+                            Id = "1f21ad9e-f89e-4d97-868e-13fe9924f526",
+                            ConcurrencyStamp = "8bbf8e0c-391c-4a9e-8722-3ab69c20a78d",
                             Name = "Voogd",
                             NormalizedName = "Voogd"
                         },
                         new
                         {
-                            Id = "0835d9f2-db87-4c2c-9d06-611f0ed39310",
-                            ConcurrencyStamp = "076e2319-3864-4bff-949b-372402dcf121",
+                            Id = "4dcb58d5-a79e-4fcb-a9a1-83b4c881058b",
+                            ConcurrencyStamp = "58ba0bc6-e82a-42b8-a227-99476a9b006b",
                             Name = "Client",
                             NormalizedName = "Client"
                         });
