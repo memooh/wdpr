@@ -1,0 +1,68 @@
+@model Aanmelding
+
+<div>
+    <h4>Aanmelding</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Voornaam)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Voornaam)
+        </dd>
+
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Achternaam)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Achternaam)
+        </dd>
+
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GeboorteDatum)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GeboorteDatum)
+        </dd>
+
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Datum)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Datum)
+        </dd>
+
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Voogd)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Voogd.Email)
+        </dd>
+    </dl>
+</div>
+<div class="row">
+    @if (!Model.HeeftAccount)
+    {
+    <div class="col-md-2">
+        <a asp-controller="Moderator" asp-action="GenereerAccount" asp-route-Id="@Model.Id">
+            <button class="btn btn-primary btn-block">Account maken voor client</button>
+        </a>
+    </div>  
+    }
+    @if (Model.Voogd != null)
+    {
+        <div class="col-md-2">
+            <a href="">
+                <button class="btn btn-primary btn-block">Account maken voor voogd</button>
+            </a>
+        </div>  
+    }
+
+</div>

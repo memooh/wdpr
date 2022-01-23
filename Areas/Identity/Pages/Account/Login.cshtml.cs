@@ -17,13 +17,13 @@ namespace wdpr.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class LoginModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<Models.Gebruiker> _userManager;
+        private readonly SignInManager<Models.Gebruiker> _signInManager;
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<IdentityUser> signInManager, 
+        public LoginModel(SignInManager<Models.Gebruiker> signInManager, 
             ILogger<LoginModel> logger,
-            UserManager<IdentityUser> userManager)
+            UserManager<Models.Gebruiker> userManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;

@@ -11,12 +11,12 @@ namespace wdpr.Areas.Identity.Pages.Account.Manage
 {
     public class SetPasswordModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<Models.Gebruiker> _userManager;
+        private readonly SignInManager<Models.Gebruiker> _signInManager;
 
         public SetPasswordModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager)
+            UserManager<Models.Gebruiker> userManager,
+            SignInManager<Models.Gebruiker> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;

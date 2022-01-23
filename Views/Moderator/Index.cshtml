@@ -1,0 +1,24 @@
+@model List<Chat>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">@Html.DisplayNameFor(c => c[0].Naam)</th>
+      <th>Aantaal deelnemers</th>
+      <th>Zelfhulpgroep</th>
+      <th>Inzien</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(c => item.Naam)</td>
+            <td>@item.Deelnames.Count() 
+            </td>
+            <td>@if(@item.Zelfhulpgroep != null) { <p>Ja</p> } else { <p>Nee</p> }</td>
+            <td><a asp-controller="Moderator" asp-action="Inzien" asp-route-Id="@item.Id">Inzien</a></td>
+        </tr>
+    }
+  </tbody>
+</table>

@@ -1,0 +1,70 @@
+@model GebruikerChatViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Gebruiker</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Geboortedatum)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Geboortedatum)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+    </dl>
+</div>
+    
+
+@if (Model.IsMinderjarig)
+{    
+<div class="row mb-2">
+  <div class="col-4">
+    <div class="list-group" id="list-tab" role="tablist">
+      @foreach (var item in Model.Deelnames)
+      {
+        <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-@item.Id" role="tab" aria-controls="home">@item.Chat.Naam</a>
+      }
+    </div>
+  </div>
+  <div class="col-8">
+    <div class="tab-content" id="nav-tabContent">
+    @foreach (var item in Model.Deelnames)
+    {
+        <div class="tab-pane fade show active" id="list-@item.Id" role="tabpanel" aria-labelledby="list-home-list">
+            Aantal berichten in de chat: @Model.ChatFrequentie(item.Chat) <br/>
+            Aantal berichten verzonden door uw voogdij : @Model.ChatsVerstuurdDoorVerzender(item.Chat) <br/>
+            Laatste Bericht verstuurd op: @Model.LaatsteBerichtDatum(item.Chat)
+        </div>
+    }
+    </div>
+  </div>
+</div>
+}    
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

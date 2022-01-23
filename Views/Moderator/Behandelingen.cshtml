@@ -1,0 +1,24 @@
+@model List<Gebruiker>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Behandelaar</th>
+      <th scope="col">Behandelingen</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Email</td>
+            <td>
+                @foreach (var behandeling in item.Behandelingen)
+                {
+                    <span>@Html.DisplayFor(b => behandeling.Behandeling.Naam)</span>
+                }
+            </td>
+        </tr>
+    }
+  </tbody>
+</table>

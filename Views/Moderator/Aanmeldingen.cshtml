@@ -1,0 +1,26 @@
+@model List<Aanmelding>
+
+ <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Aanmelding</th>
+      <th scope="col">Naam</th>
+      <th scope="col">Datum</th>
+      <th scope="col">Voogd?</th>
+      <th scope="col">Acties?</th>
+    </tr>
+  </thead>
+  <tbody>
+      @foreach (var item in Model)
+      {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Voornaam @item.Achternaam</td>
+            <td>@item.Datum</td>
+            <td>@if(@item.Voogd != null) { <p>@item.Voogd.Email</p> } else { <p>Geen</p> }</td>
+            <td><a asp-controller="Moderator" asp-action="AanmeldingBekijken" asp-route-AanmeldingsId="@item.Id">Inzien</a></td>
+        </tr>
+      }
+
+  </tbody>
+</table>   

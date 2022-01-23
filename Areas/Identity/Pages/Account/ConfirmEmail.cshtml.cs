@@ -14,9 +14,9 @@ namespace wdpr.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class ConfirmEmailModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<Models.Gebruiker> _userManager;
 
-        public ConfirmEmailModel(UserManager<IdentityUser> userManager)
+        public ConfirmEmailModel(UserManager<Models.Gebruiker> userManager)
         {
             _userManager = userManager;
         }

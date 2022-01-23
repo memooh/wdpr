@@ -11,13 +11,13 @@ namespace wdpr.Areas.Identity.Pages.Account.Manage
 {
     public class ResetAuthenticatorModel : PageModel
     {
-        UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        UserManager<Models.Gebruiker> _userManager;
+        private readonly SignInManager<Models.Gebruiker> _signInManager;
         ILogger<ResetAuthenticatorModel> _logger;
 
         public ResetAuthenticatorModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
+            UserManager<Models.Gebruiker> userManager,
+            SignInManager<Models.Gebruiker> signInManager,
             ILogger<ResetAuthenticatorModel> logger)
         {
             _userManager = userManager;

@@ -11,12 +11,12 @@ namespace wdpr.Areas.Identity.Pages.Account.Manage
 {
     public partial class IndexModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<Models.Gebruiker> _userManager;
+        private readonly SignInManager<Models.Gebruiker> _signInManager;
 
         public IndexModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager)
+            UserManager<Models.Gebruiker> userManager,
+            SignInManager<Models.Gebruiker> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -37,7 +37,7 @@ namespace wdpr.Areas.Identity.Pages.Account.Manage
             public string PhoneNumber { get; set; }
         }
 
-        private async Task LoadAsync(IdentityUser user)
+        private async Task LoadAsync(Models.Gebruiker user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);

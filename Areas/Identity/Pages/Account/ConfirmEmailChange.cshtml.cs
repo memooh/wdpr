@@ -14,10 +14,10 @@ namespace wdpr.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class ConfirmEmailChangeModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<Models.Gebruiker> _userManager;
+        private readonly SignInManager<Models.Gebruiker> _signInManager;
 
-        public ConfirmEmailChangeModel(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public ConfirmEmailChangeModel(UserManager<Models.Gebruiker> userManager, SignInManager<Models.Gebruiker> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
