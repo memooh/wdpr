@@ -9,6 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using SignalRChat.Hubs;
+using Models;
 
 namespace wdpr
 {
@@ -24,8 +27,13 @@ namespace wdpr
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
-
+            services.AddControllersWithViews().AddNewtonsoftJson();
+            services.AddRazorPages();
+            services.AddSignalR(options => {options.EnableDetailedErrors = true;});
+            services.AddIdentity<Gebruiker, IdentityRole>()
+                .AddEntityFrameworkStores<KliniekContext>()
+                .AddDefaultTokenProviders()
+                .AddDefaultUI();
             services.AddDbContext<KliniekContext>(options =>
                     options.UseSqlite(Configuration.GetConnectionString("KliniekContext")));
         }
@@ -47,11 +55,13 @@ namespace wdpr
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapRazorPages();
+                endpoints.MapHub<ChatHub>("/chatHub");
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

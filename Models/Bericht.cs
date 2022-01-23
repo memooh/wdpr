@@ -1,11 +1,13 @@
 using System;
+using System.Collections.Generic;
 
 namespace Models {
     public class Bericht {
         public int Id {get; set;}
         public string Beschrijving {get; set;}
         public DateTime Datum { get; set; }
-        public Gebruiker Verzender {get; set;}
+        public Deelname Deelname {get; set;}
         public Chat Chat { get; set; }
+        public ICollection<Melding> Meldingen {get; set;}
     }
 }

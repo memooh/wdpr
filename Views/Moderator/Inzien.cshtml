@@ -1,0 +1,70 @@
+@model Chat
+
+<h1>Chat gegevens</h1>
+<div class="row">
+  <div class="col-4">
+    <div class="list-group" id="list-tab" role="tablist">
+      <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Gegevens</a>
+      <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Deelnemers</a>
+    </div>
+  </div>
+  <div class="col-8">
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+          <div class="row">
+              <div class="col-md-12">
+                  Chat naam: @Model.ChatNaamGlobaal() <br/>
+                  Aantal berichten verstuurd (totaal): @Model.Berichten.Count() <br/>
+                  Behandelaar: @Model.Behandelaar.UserName
+              </div>
+          </div>
+      </div>
+      <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+          <div class="row">
+              <div class="col-md-12">
+                    <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">@Html.DisplayNameFor(c => c.Deelnames.First().Client.UserName)</th>
+                        <th scope="col">@Html.DisplayNameFor(c => c.Deelnames.First().Toetredingsdatum)</th>
+                        <th scope="col">@Html.DisplayNameFor(c => c.Deelnames.First().AantalBerichtenVerstuurd)</th>
+                        <th scope="col">Blokkeer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Deelnames)
+                            {
+                        <tr>
+                                <td>@Html.DisplayFor(d => item.Client.UserName)</td>
+                                <td>@Html.DisplayFor(d => item.Toetredingsdatum)</td>
+                                <td>@Html.DisplayFor(d => item.AantalBerichtenVerstuurd)</td>
+                                <td><input class="block-button" type="checkbox" @(item.Geblokkeerd == true ? "checked" : string.Empty)  data-d-block="@item.Id"></td>
+                        </tr>
+                            }
+                    </tbody>
+                    </table>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+@section Scripts {
+    <script>
+    var elements = document.getElementsByClassName("block-button");
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].addEventListener('click', (evt) => {
+            fetch("/Moderator/Blokkeer", { 
+                method: "post", 
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    Id: evt.target.getAttribute("data-d-block")
+                    }),
+                });
+        }, false);
+    }
+    </script>
+}
