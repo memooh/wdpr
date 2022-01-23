@@ -2,14 +2,16 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace wdpr.Migrations
 {
     [DbContext(typeof(KliniekContext))]
-    partial class KliniekContextModelSnapshot : ModelSnapshot
+    [Migration("20220123202716_ZelfhulpLeeftijd")]
+    partial class ZelfhulpLeeftijd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -86,15 +88,15 @@ namespace wdpr.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2b24b91d-6dec-42c5-b293-5e8c5ee6392d",
-                            ConcurrencyStamp = "0878ba3e-41b5-4af5-bcfb-841350fb48f7",
+                            Id = "9cd7f083-4ea9-477a-b2f0-4f379737a703",
+                            ConcurrencyStamp = "498259f6-2e5a-4baf-a062-046cc312cbc8",
                             Name = "Voogd",
                             NormalizedName = "Voogd"
                         },
                         new
                         {
-                            Id = "68aa1902-b7d8-4a0a-a178-26581e59a806",
-                            ConcurrencyStamp = "562cdcb5-5bb3-4c0b-9b5e-a9bd0eaf3795",
+                            Id = "765e16da-605a-4bf2-93da-0faf400b7c4c",
+                            ConcurrencyStamp = "aed63ad1-9376-4fc2-9e30-fff80896a0ff",
                             Name = "Client",
                             NormalizedName = "Client"
                         });
@@ -374,8 +376,9 @@ namespace wdpr.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("BehandelaarId")
-                        .HasColumnType("TEXT");
+                    b.Property<int?>("BehandelaarId")
+                        .IsRequired()
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -424,12 +427,11 @@ namespace wdpr.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("VoogdId")
-                        .HasColumnType("TEXT");
+                    b.Property<int?>("VoogdId")
+                        .IsRequired()
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BehandelaarId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -437,8 +439,6 @@ namespace wdpr.Migrations
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex");
-
-                    b.HasIndex("VoogdId");
 
                     b.ToTable("AspNetUsers");
                 });
@@ -647,11 +647,13 @@ namespace wdpr.Migrations
                 {
                     b.HasOne("Models.Gebruiker", "Behandelaar")
                         .WithMany("Clienten")
-                        .HasForeignKey("BehandelaarId");
+                        .HasForeignKey("BehandelaarId")
+                        .HasPrincipalKey("BehandelaarId");
 
                     b.HasOne("Models.Gebruiker", "Voogd")
                         .WithMany("Voogdij")
-                        .HasForeignKey("VoogdId");
+                        .HasForeignKey("VoogdId")
+                        .HasPrincipalKey("VoogdId");
 
                     b.Navigation("Behandelaar");
 

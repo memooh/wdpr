@@ -32,5 +32,9 @@ public class KliniekContext : IdentityDbContext<Gebruiker>
             .WithOne(b => b.Chat)
             .HasForeignKey<Chat>(b => b.ZelfhulpgroepInt)
             .IsRequired(false);
+
+            builder.Entity<Gebruiker>()
+            .HasOne(s => s.Voogd)
+            .WithMany(s => s.Voogdij);
         }
     }

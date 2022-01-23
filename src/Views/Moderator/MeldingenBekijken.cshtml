@@ -1,0 +1,21 @@
+@model List<Melding>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Melding</th>
+      <th scope="col">Bericht</th>
+      <th scope="col">Actie</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Bericht.Beschrijving</td>
+            <td><a asp-controller="Moderator" asp-action="Inzien" asp-route-Id=@item.Bericht.Deelname.Chat.Id>Chat inzien</a></td>
+        </tr>
+    }
+  </tbody>
+</table>

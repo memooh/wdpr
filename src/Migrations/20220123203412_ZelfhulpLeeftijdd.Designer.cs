@@ -2,14 +2,16 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace wdpr.Migrations
 {
     [DbContext(typeof(KliniekContext))]
-    partial class KliniekContextModelSnapshot : ModelSnapshot
+    [Migration("20220123203412_ZelfhulpLeeftijdd")]
+    partial class ZelfhulpLeeftijdd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -86,15 +88,15 @@ namespace wdpr.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2b24b91d-6dec-42c5-b293-5e8c5ee6392d",
-                            ConcurrencyStamp = "0878ba3e-41b5-4af5-bcfb-841350fb48f7",
+                            Id = "5d10db17-cd26-4814-8f32-9c58038d3453",
+                            ConcurrencyStamp = "6b29d6d5-03cb-40b7-aa65-350b455effad",
                             Name = "Voogd",
                             NormalizedName = "Voogd"
                         },
                         new
                         {
-                            Id = "68aa1902-b7d8-4a0a-a178-26581e59a806",
-                            ConcurrencyStamp = "562cdcb5-5bb3-4c0b-9b5e-a9bd0eaf3795",
+                            Id = "d3184c61-be5e-41a8-bdf9-62e85132c75a",
+                            ConcurrencyStamp = "60968fd4-4b38-49fc-a5cf-587f007ff805",
                             Name = "Client",
                             NormalizedName = "Client"
                         });
@@ -374,8 +376,12 @@ namespace wdpr.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("BehandelaarId")
-                        .HasColumnType("TEXT");
+                    b.Property<int?>("BehandelaarId")
+                        .IsRequired()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("BehandelaarId1")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -424,12 +430,16 @@ namespace wdpr.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("VoogdId")
-                        .HasColumnType("TEXT");
+                    b.Property<int?>("VoogdId")
+                        .IsRequired()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("VoogdId1")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BehandelaarId");
+                    b.HasIndex("BehandelaarId1");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -438,7 +448,7 @@ namespace wdpr.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex");
 
-                    b.HasIndex("VoogdId");
+                    b.HasIndex("VoogdId1");
 
                     b.ToTable("AspNetUsers");
                 });
@@ -647,11 +657,13 @@ namespace wdpr.Migrations
                 {
                     b.HasOne("Models.Gebruiker", "Behandelaar")
                         .WithMany("Clienten")
-                        .HasForeignKey("BehandelaarId");
+                        .HasForeignKey("BehandelaarId1")
+                        .HasPrincipalKey("BehandelaarId");
 
                     b.HasOne("Models.Gebruiker", "Voogd")
                         .WithMany("Voogdij")
-                        .HasForeignKey("VoogdId");
+                        .HasForeignKey("VoogdId1")
+                        .HasPrincipalKey("VoogdId");
 
                     b.Navigation("Behandelaar");
 

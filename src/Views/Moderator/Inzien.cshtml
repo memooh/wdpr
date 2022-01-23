@@ -14,8 +14,12 @@
           <div class="row">
               <div class="col-md-12">
                   Chat naam: @Model.ChatNaamGlobaal() <br/>
-                  Aantal berichten verstuurd (totaal): @Model.Berichten.Count() <br/>
-                  Behandelaar: @Model.Behandelaar.UserName
+                  @if(Model.Berichten != null) {
+                    <span>Aantal berichten verstuurd (totaal): @Model.Berichten.Count() </span><br/>
+                  }
+                  @if(Model.Behandelaar != null) {
+                    <span>Behandelaar: @Model.Behandelaar.UserName</span><br/>
+                  }  
               </div>
           </div>
       </div>

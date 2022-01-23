@@ -49,9 +49,14 @@ namespace wdpr.Controllers
                                             .ThenInclude(d => d.Berichten)
                                             .Include(c => c.Deelnames)
                                             .ThenInclude(d => d.Client)
+                                            .Include(c => c.Zelfhulpgroep)
                                             .AsSplitQuery()
                                             .SingleAsync(c => c.Id == Id)
             );
+        }
+
+        public async Task<IActionResult> MeldingenBekijken() {
+            return View(await _context.Meldingen.Include(m => m.Bericht).ThenInclude(b => b.Deelname).ThenInclude(d => d.Chat).ToListAsync());
         }
 
         public async Task<IActionResult> Aanmeldingen () {
@@ -86,6 +91,23 @@ namespace wdpr.Controllers
             deelname.Geblokkeerd = deelname.Geblokkeerd ? false : true;
             await _context.SaveChangesAsync(); 
         }
-        
+
+
+        public async Task<IActionResult> overzichtBehandelaars()
+        {
+            List<Gebruiker> gebruikers = await _context.Gebruikers.Include(g => g.Behandelingen).ThenInclude(g => g.Behandeling).ToListAsync();
+            List<Gebruiker> behandelaars = new List<Gebruiker>();
+
+            foreach (var item in gebruikers)
+            {   
+               foreach (var rol in await _userManager.GetRolesAsync(item))
+               {
+                    if(rol == "Behandelaar")
+                        behandelaars.Add(item);
+               }
+            }
+
+            return View(behandelaars);
+        }
     }
 }

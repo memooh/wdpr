@@ -16,7 +16,7 @@ namespace Models {
 
         public string ChatNaam(Gebruiker gebruiker)
         {
-            if (Zelfhulpgroep == null)
+            if (ZelfhulpgroepInt == null)
             {
                 if(Behandelaar != gebruiker) 
                     return "Chat met " + Behandelaar.Email;
@@ -27,7 +27,7 @@ namespace Models {
 
         public string ChatNaamGlobaal()
         {
-            if (Zelfhulpgroep != null) {
+            if (ZelfhulpgroepInt != null) {
                 return Zelfhulpgroep.Naam;
             }
             else if (Deelnames.Count() == 1) {

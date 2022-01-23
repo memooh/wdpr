@@ -2,14 +2,16 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace wdpr.Migrations
 {
     [DbContext(typeof(KliniekContext))]
-    partial class KliniekContextModelSnapshot : ModelSnapshot
+    [Migration("20220123201905_GebruikerEditb")]
+    partial class GebruikerEditb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -86,15 +88,15 @@ namespace wdpr.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2b24b91d-6dec-42c5-b293-5e8c5ee6392d",
-                            ConcurrencyStamp = "0878ba3e-41b5-4af5-bcfb-841350fb48f7",
+                            Id = "e006ee41-1a4d-45bf-a0e0-c85d5a3a5d28",
+                            ConcurrencyStamp = "9c56f281-7f5b-4bb8-8ee9-2bfec8b123fe",
                             Name = "Voogd",
                             NormalizedName = "Voogd"
                         },
                         new
                         {
-                            Id = "68aa1902-b7d8-4a0a-a178-26581e59a806",
-                            ConcurrencyStamp = "562cdcb5-5bb3-4c0b-9b5e-a9bd0eaf3795",
+                            Id = "d7440d68-8fee-469a-9a7d-3c06aaa92fa1",
+                            ConcurrencyStamp = "41a5516b-5a65-4ce4-a3c0-919ab1c8363a",
                             Name = "Client",
                             NormalizedName = "Client"
                         });
@@ -374,8 +376,9 @@ namespace wdpr.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("BehandelaarId")
-                        .HasColumnType("TEXT");
+                    b.Property<int?>("BehandelaarId")
+                        .IsRequired()
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -424,12 +427,11 @@ namespace wdpr.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("VoogdId")
-                        .HasColumnType("TEXT");
+                    b.Property<int?>("VoogdId")
+                        .IsRequired()
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BehandelaarId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -437,8 +439,6 @@ namespace wdpr.Migrations
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex");
-
-                    b.HasIndex("VoogdId");
 
                     b.ToTable("AspNetUsers");
                 });
@@ -473,13 +473,7 @@ namespace wdpr.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Naam")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("avgLeeftijd")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -647,11 +641,13 @@ namespace wdpr.Migrations
                 {
                     b.HasOne("Models.Gebruiker", "Behandelaar")
                         .WithMany("Clienten")
-                        .HasForeignKey("BehandelaarId");
+                        .HasForeignKey("BehandelaarId")
+                        .HasPrincipalKey("BehandelaarId");
 
                     b.HasOne("Models.Gebruiker", "Voogd")
                         .WithMany("Voogdij")
-                        .HasForeignKey("VoogdId");
+                        .HasForeignKey("VoogdId")
+                        .HasPrincipalKey("VoogdId");
 
                     b.Navigation("Behandelaar");
 
