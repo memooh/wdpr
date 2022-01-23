@@ -1,0 +1,27 @@
+/** Homepage **/
+
+.bgimage {
+    width:100%;
+    height:500px;
+    background: url('https://images.unsplash.com/photo-1438109491414-7198515b166b?q=80&fm=jpg&s=cbdabf7a79c087a0b060670a6d79726c');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+    background-attachment: fixed;
+  }
+  .bgimage h5 {
+    color:white;
+    text-shadow:2px 2px #333;
+  }
+
+/** Diensten **/
+
+.upperContainerbruh.bg-secondary {
+  height: 500px;
+}
+
+.col-lg-6.align-self-center.fortiefour {
+
+    margin-top: 6%;
+
+}

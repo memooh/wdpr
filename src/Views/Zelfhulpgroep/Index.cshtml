@@ -1,0 +1,87 @@
+@model IEnumerable<Models.Zelfhulpgroep>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" name="searchString" value="@ViewBag.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </p>
+    </div>
+</form>
+
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model){
+        <div class="col-sm-3">
+            <div class="card">
+                <img class="card-img-top img-fluid" src="https://www.tekstmaatje.nl/wp-content/uploads/2020/06/placeholder.png" alt="Placeholder image">
+                <div class="card-block">
+                    <h4 class="card-title">@Html.DisplayFor(modelItem => item.Naam)</h4>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+                    <p class="card-text">Gemiddelde leeftijd: @Html.DisplayFor(modelItem => item.avgLeeftijd)</p>
+                    <a asp-action="AanmeldenVoorGroep" asp-controller="Zelfhulpgroep" asp-route-id="@item.Id">Aanmelden</a>
+                    <p class="card-text">
+                    @if (User.IsInRole("Hulpverlener")){
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                    }
+                    </p>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>
+
+    @* <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Naam)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.avgLeeftijd)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Naam)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.avgLeeftijd)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table> *@
