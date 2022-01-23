@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -154,6 +155,7 @@ namespace wdpr.Controllers
             return View();
         }
 
+        [Authorize(Roles="Ouder")]
         public IActionResult CreateOuder(){
             return View();
             
@@ -171,7 +173,7 @@ namespace wdpr.Controllers
                 Achternaam = aanmeldingModel.Achternaam,
                 Datum = aanmeldingModel.Datum,
                 Voogd = await _context.Gebruikers.SingleAsync(g => g.Email == aanmeldingModel.VoogdEmail),
-                Behandelaar = await _context.Gebruikers.SingleAsync(g => g.Id == aanmeldingModel.BehandelaarId),
+                Behandelaar = await _context.Gebruikers.SingleAsync(g => g.Id == aanmeldingModel.BehandelaarEmail),
                 GeboorteDatum = aanmeldingModel.GeboorteDatum,
                 HeeftAccount = false
             };

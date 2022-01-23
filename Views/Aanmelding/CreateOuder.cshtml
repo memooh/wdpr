@@ -6,7 +6,6 @@
 
 <h1>Nieuwe aanmelding voor uw zoon/dochter</h1>
 
-<h4>Nieuwe aanmelding</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,7 +13,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Datum" class="control-label">Voor welke datum wilt u een afspraak maken?</label>
-                <input asp-for="Datum" type="datetime" class="form-control" />
+                <input asp-for="Datum" class="form-control" />
                 <span asp-validation-for="Datum" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -34,7 +33,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="GeboorteDatum" class="control-label">Wat is de geboortedatum van uw kind?</label>
-                <input asp-for="GeboorteDatum" type="datetime" class="form-control" />
+                <input asp-for="GeboorteDatum" class="form-control" />
                 <span asp-validation-for="GeboorteDatum" class="text-danger"></span>
             </div>
             <div class="form-group">

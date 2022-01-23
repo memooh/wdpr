@@ -12,7 +12,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Datum" class="control-label">Voor welke datum wil je een afspraak maken</label>
-                <input asp-for="Datum" type="datetime" class="form-control" />
+                <input asp-for="Datum" class="form-control" />
                 <span asp-validation-for="Datum" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -46,7 +46,7 @@
                 <span asp-validation-for="Behandelaar" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="VoogdToestemming" class="control-label">Heb jij toestemming van je ouder(s)/voogd(en)</label>
+                <label asp-for="VoogdToestemming" class="control-label">Heb jij toestemming van je ouder(s)/voogd(en)?</label>
                 <input asp-for="VoogdToestemming" class="form-control" />
                 <span asp-validation-for="VoogdToestemming" class="text-danger"></span>
             </div>
