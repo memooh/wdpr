@@ -2,14 +2,16 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace wdpr.Migrations
 {
     [DbContext(typeof(KliniekContext))]
-    partial class KliniekContextModelSnapshot : ModelSnapshot
+    [Migration("20220122214759_testing3")]
+    partial class testing3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -86,15 +88,15 @@ namespace wdpr.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c137188c-7601-4e22-b5ba-99a880225b64",
-                            ConcurrencyStamp = "7cd851a5-72dd-4bdf-867d-01f2f36f2588",
+                            Id = "e7afea1e-d4f2-47f3-932d-489d3d342bf7",
+                            ConcurrencyStamp = "53d63b94-fbec-4af1-a0ed-44855ddbf928",
                             Name = "Voogd",
                             NormalizedName = "Voogd"
                         },
                         new
                         {
-                            Id = "493a03ce-c9b9-47d8-875d-377611e5f688",
-                            ConcurrencyStamp = "2a08c607-8ad8-4f19-9a1d-a78eae6f2a46",
+                            Id = "659d1fa2-4235-4a11-89f4-f41786a08856",
+                            ConcurrencyStamp = "a343d0e9-af06-4f88-9b11-d3fde997b12f",
                             Name = "Client",
                             NormalizedName = "Client"
                         });
@@ -228,9 +230,6 @@ namespace wdpr.Migrations
 
                     b.Property<string>("VoogdId")
                         .HasColumnType("TEXT");
-
-                    b.Property<bool?>("VoogdToestemming")
-                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Voornaam")
                         .HasColumnType("TEXT");

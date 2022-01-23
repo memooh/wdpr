@@ -154,16 +154,9 @@ namespace wdpr.Controllers
             return View();
         }
 
-        public IActionResult CheckLeeftijd(int leeftijd){
-            if (leeftijd < 12){
-                return View();
-            } else if (leeftijd > 11 && leeftijd < 16){
-                return View();
-            } else if (leeftijd >= 16){
-                return View("Aanmelden");
-            } else {
-                return NotFound();
-            }
+        public IActionResult CreateOuder(){
+            return View();
+            
         }
     }
 }

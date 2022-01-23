@@ -4,51 +4,48 @@
     ViewData["Title"] = "Nieuwe aanmelding";
 }
 
-<h1>Jezelf aanmelden</h1>
+<h1>Nieuwe aanmelding voor uw zoon/dochter</h1>
+
+<h4>Nieuwe aanmelding</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Datum" class="control-label">Voor welke datum wil je een afspraak maken</label>
+                <label asp-for="Datum" class="control-label">Voor welke datum wilt u een afspraak maken?</label>
                 <input asp-for="Datum" type="datetime" class="form-control" />
                 <span asp-validation-for="Datum" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Gebruikersnaam" class="control-label">Wat is jou emailadres?</label>
+                <label asp-for="Gebruikersnaam" class="control-label">Vul hier het emailadres van uw kind in</label>
                 <input asp-for="Gebruikersnaam" class="form-control" />
                 <span asp-validation-for="Gebruikersnaam" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Voornaam" class="control-label">Wat is jou voornaam?</label>
+                <label asp-for="Voornaam" class="control-label">Wat is de voornaam van uw kind?</label>
                 <input asp-for="Voornaam" class="form-control" />
                 <span asp-validation-for="Voornaam" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Achternaam" class="control-label">Wat is jou achternaam?</label>
+                <label asp-for="Achternaam" class="control-label">Wat is de achternaam van uw kind?</label>
                 <input asp-for="Achternaam" class="form-control" />
                 <span asp-validation-for="Achternaam" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="GeboorteDatum" class="control-label">Wat is jou geboortedatum?</label>
-                <input asp-for="GeboorteDatum" class="form-control" />
+                <label asp-for="GeboorteDatum" class="control-label">Wat is de geboortedatum van uw kind?</label>
+                <input asp-for="GeboorteDatum" type="datetime" class="form-control" />
                 <span asp-validation-for="GeboorteDatum" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Voogd" class="control-label">Wat is het emailadres van jou voogd?</label>
+                <label asp-for="Voogd" class="control-label">Wat is uw emailadres?</label>
                 <input asp-for="Voogd" class="form-control" />
                 <span asp-validation-for="Voogd" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Behandelaar" class="control-label">Met wie wil jij een afspraak maken?</label>
+                <label asp-for="Behandelaar" class="control-label">Met welke behandelaar wilt u een afspraak maken?</label>
                 <input asp-for="Behandelaar" class="form-control" />
                 <span asp-validation-for="Behandelaar" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="VoogdToestemming" class="control-label">Heb jij toestemming van je ouder(s)/voogd(en)</label>
-                <input asp-for="VoogdToestemming" class="form-control" />
-                <span asp-validation-for="VoogdToestemming" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Aanmelden" class="btn btn-primary" />
@@ -56,8 +53,3 @@
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-

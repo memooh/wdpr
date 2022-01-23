@@ -15634,28 +15634,18 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Gebruiker\\Create.cshtml",
-      "TargetPath": "Views\\Gebruiker\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Gebruiker\\Index.cshtml",
-      "TargetPath": "Views\\Gebruiker\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Aanmelding\\Index.cshtml",
       "TargetPath": "Views\\Aanmelding\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Gebruiker\\Details.cshtml",
-      "TargetPath": "Views\\Gebruiker\\Details.cshtml",
+      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Home\\LeeftijdVragenAanmelden.cshtml",
+      "TargetPath": "Views\\Home\\LeeftijdVragenAanmelden.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Home\\LeeftijdVragenAanmelden.cshtml",
-      "TargetPath": "Views\\Home\\LeeftijdVragenAanmelden.cshtml",
+      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Aanmelding\\BedanktAanmelding.cshtml",
+      "TargetPath": "Views\\Aanmelding\\BedanktAanmelding.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15674,11 +15664,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Gebruiker\\Delete.cshtml",
-      "TargetPath": "Views\\Gebruiker\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
@@ -15689,13 +15674,13 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Gebruiker\\Edit.cshtml",
-      "TargetPath": "Views\\Gebruiker\\Edit.cshtml",
+      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Home\\Privacy.cshtml",
+      "TargetPath": "Views\\Home\\Privacy.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Home\\Privacy.cshtml",
-      "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FilePath": "c:\\Users\\troys\\OneDrive\\Documents\\GitHub\\wdpr\\Views\\Aanmelding\\CreateOuder.cshtml",
+      "TargetPath": "Views\\Aanmelding\\CreateOuder.cshtml",
       "FileKind": "mvc"
     },
     {
