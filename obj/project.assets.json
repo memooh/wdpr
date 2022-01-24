@@ -7785,19 +7785,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\movdb\\.nuget\\packages\\": {}
+    "C:\\Users\\stefa\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\school\\wdpr\\wdpr.csproj",
+      "projectUniqueName": "C:\\git map\\wdpr\\wdpr.csproj",
       "projectName": "wdpr",
-      "projectPath": "D:\\school\\wdpr\\wdpr.csproj",
-      "packagesPath": "C:\\Users\\movdb\\.nuget\\packages\\",
-      "outputPath": "D:\\school\\wdpr\\obj\\",
+      "projectPath": "C:\\git map\\wdpr\\wdpr.csproj",
+      "packagesPath": "C:\\Users\\stefa\\.nuget\\packages\\",
+      "outputPath": "C:\\git map\\wdpr\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\movdb\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\stefa\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -7864,6 +7864,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[5.0.12, 5.0.12]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -7872,16 +7878,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file D:\\school\\wdpr\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }
