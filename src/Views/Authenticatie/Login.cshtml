@@ -1,0 +1,36 @@
+@model Models.Input.LoginModel
+
+@{
+    ViewData["Title"] = "Inloggen";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <form method="post">
+            <h4>@ViewData["Title"]</h4>
+                <hr />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Wachtwoord"></label>
+                    <input asp-for="Wachtwoord" class="form-control" />
+                    <span asp-validation-for="Wachtwoord" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label asp-for="RememberMe">
+                            <input asp-for="RememberMe" />
+                            @Html.DisplayNameFor(m => m.RememberMe)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Log in</button>
+                </div>
+            </form>
+    </div>
+</div>

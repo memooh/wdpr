@@ -63,7 +63,7 @@ public class ChatApiController : Controller
     {
         Chat BerichtChat = await _context.Chats.Include(c => c.Deelnames).SingleAsync(c => c.Id == messageModel.ChatId);
         Gebruiker User = await _userManager.GetUserAsync(HttpContext.User);
-        Deelname d = await _context.Deelnames.Include(d => d.Client).SingleAsync(d => d.Client.Id == User.Id);
+        Deelname d = await _context.Deelnames.Include(d => d.Client).SingleAsync(d => d.Client.Id == User.Id && d.Chat.Id == messageModel.ChatId);
         _context.Berichten.Add(
             new Bericht {
                 Chat = BerichtChat, 
@@ -80,10 +80,10 @@ public class ChatApiController : Controller
     [HttpPost]
     public async Task Melding (MeldingModel meldingModel) 
     {
-        Bericht BerichtChat = await _context.Berichten.SingleAsync(c => c.Id == meldingModel.BerichtId);
+        Bericht BerichtChat = await _context.Berichten.Include(b => b.Deelname).ThenInclude(d => d.Client).SingleAsync(c => c.Id == meldingModel.BerichtId);
         _context.Meldingen.Add(
             new Melding {
-                Beschrijving = meldingModel.Bericht,
+                Beschrijving = "[" + BerichtChat.Deelname.Client.Email + "] is gerapporteerd voor = " +  meldingModel.Bericht,
                 Datum = new DateTime(),
                 Bericht = BerichtChat
                 }

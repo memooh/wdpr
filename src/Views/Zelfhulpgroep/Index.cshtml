@@ -1,87 +1,87 @@
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<Gebruiker> UserManager
+
 @model IEnumerable<Models.Zelfhulpgroep>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Selecteer een zelfhulpgroep";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-
-<form asp-action="Index" method="get">
-    <div class="form-actions no-color">
-        <p>
-            Find by name: <input type="text" name="searchString" value="@ViewBag.CurrentFilter" />
-            <input type="submit" value="Search" class="btn btn-default" /> |
-            <a asp-action="Index">Back to List</a>
-        </p>
-    </div>
-</form>
-
-
-<div class="container">
-    <div class="row">
-        @foreach (var item in Model){
-        <div class="col-sm-3">
-            <div class="card">
-                <img class="card-img-top img-fluid" src="https://www.tekstmaatje.nl/wp-content/uploads/2020/06/placeholder.png" alt="Placeholder image">
-                <div class="card-block">
-                    <h4 class="card-title">@Html.DisplayFor(modelItem => item.Naam)</h4>
-                    <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
-                    <p class="card-text">Gemiddelde leeftijd: @Html.DisplayFor(modelItem => item.avgLeeftijd)</p>
-                    <a asp-action="AanmeldenVoorGroep" asp-controller="Zelfhulpgroep" asp-route-id="@item.Id">Aanmelden</a>
-                    <p class="card-text">
-                    @if (User.IsInRole("Hulpverlener")){
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    </td>
-                    }
-                    </p>
-                </div>
-            </div>
-        </div>
+<div class="row">
+    <div class="col-md-12">
+        <h1>@ViewData["Title"]</h4>
+        @if (User.IsInRole("Behandelaar"))
+        {
+            <a class="font-weight-light" asp-action="Create">Creëer een nieuwe zelfhulpgroep</a>
         }
-    </div>
-</div>
+        <hr />
+        <div id="content" class="row mb-2">
+            <div class="col-md-12 mb-4">
+                <form class="form-inline" asp-action="Index" method="get">
+                    <div class="form-check mb-2 mr-sm-2">
+                        <label class="form-check-label" for="inlineFormCheck">
+                            Zoek een zelfhulpgroep:
+                        </label>
+                    </div>
+                    <div class="input-group mb-2 mr-sm-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">Titel</div>
+                        </div>
+                        <input type="text" class="form-control" id="titel" name="titel" value="@ViewBag.Titel">
+                    </div>
+                    <div class="input-group mb-2 mr-sm-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">Leeftijd</div>
+                        </div>
+                        <input type="text" class="form-control" id="leeftijd" name="leeftijd" value="@ViewBag.Leeftijd">
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-2">Zoeken</button>
+                    <a asp-controller="Zelfhulpgroep" asp-action="Index">
+                        <button type="button" class="btn btn-link mb-2">Reset</button>
+                    </a>
+                </form>
+            </div>
 
-    @* <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Naam)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.avgLeeftijd)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Naam)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.avgLeeftijd)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    </td>
-                </tr>
+                <div class="col-md-3">
+                    <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                        <div class="card-body d-flex flex-column align-items-start">
+                            <h5 class="mb-0">
+                                <p class="text-dark text-break">@Html.DisplayFor(modelItem => item.Naam)</p>
+                            </h5>
+                            <p class="card-text mb-2 text-break">@Html.DisplayFor(modelItem => item.Description)</p>
+                            <p class="card-text mb-2 text-break">Gemiddelde leeftijd: @Html.DisplayFor(modelItem =>
+                            item.avgLeeftijd)</p>
+                            @if (!User.IsInRole("Behandelaar"))
+                            {
+                                @if (item.ZelfhulpDeelnames.Any(z => z.Id == item.Id && z.Client.Id ==
+                               UserManager.GetUserId(User)))
+                                {
+                                    <span>Je bent al lid</span>
+                                }
+                                else
+                                {
+                                    <a asp-action="AanmeldenVoorGroep" asp-controller="Zelfhulpgroep" asp-route-id="@item.Id">Selecteren</a>
+                                }
+                            }
+                            else 
+                            {
+                                <a asp-action="Edit" asp-route-id="@item.Id">Bewerk</a>
+                                <a asp-action="Delete" asp-route-id="@item.Id">Verwijderen</a>
+                            }
+                        </div>
+                    </div>
+                </div>
             }
-        </tbody>
-    </table> *@
+        </div>
+    </div>
+
+    @* @if (User.IsInRole("Hulpverlener")){
+        <td>
+        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+        </td>
+        } *@
+</div>

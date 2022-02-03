@@ -1,0 +1,84 @@
+@model Models.Input.RegistreerAlsClient
+
+@{
+    ViewData["Title"] = "Registreren";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <form method="post">
+            <h4>@ViewData["Title"]</h4>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label asp-for="Voornaam"></label>
+                    <input asp-for="Voornaam" class="form-control" />
+                    <span asp-validation-for="Voornaam" class="text-danger"></span>
+                </div>
+                <div class="form-group col">
+                    <label asp-for="Achternaam"></label>
+                    <input asp-for="Achternaam" class="form-control" />
+                    <span asp-validation-for="Achternaam" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label asp-for="Adres"></label>
+                    <input asp-for="Adres" class="form-control" />
+                    <span asp-validation-for="Adres" class="text-danger"></span>
+                </div>
+                <div class="form-group col">
+                    <label asp-for="Postcode"></label>
+                    <input asp-for="Postcode" class="form-control" />
+                    <span asp-validation-for="Postcode" class="text-danger"></span>
+                </div>
+                <div class="form-group col">
+                    <label asp-for="Woonplaats"></label>
+                    <input asp-for="Woonplaats" class="form-control" />
+                    <span asp-validation-for="Woonplaats" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group col">
+                    <label asp-for="Geboortedatum"></label>
+                    <input asp-for="Geboortedatum" class="form-control" />
+                    <span asp-validation-for="Geboortedatum" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label asp-for="VoogdSelectie"></label>
+                    <select asp-for="VoogdSelectie" asp-items='Model.VoogdOpties' class="form-control"></select>                
+                    <span asp-validation-for="VoogdSelectie" class="text-danger"></span>
+                </div>
+                <div class="form-group col">
+                    <label asp-for="VoogdEmail"></label>
+                    <input asp-for="VoogdEmail" class="form-control" />
+                    <span asp-validation-for="VoogdEmail" class="text-danger"></span>
+                    <small id="passwordHelpBlock" class="form-text text-muted">
+                        Voogd email hoef je alleen in te vullen als je geen voogd bent of onder de 16
+                    </small>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label asp-for="Wachtwoord"></label>
+                    <input asp-for="Wachtwoord" class="form-control" />
+                    <span asp-validation-for="Wachtwoord" class="text-danger"></span>
+                </div>
+                <div class="form-group col">
+                    <label asp-for="BevestigWachtwoord"></label>
+                    <input asp-for="BevestigWachtwoord" class="form-control" />
+                    <span asp-validation-for="BevestigWachtwoord" class="text-danger"></span>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-block btn-primary">Aanmelden</button>
+        </form>
+    </div>
+</div>

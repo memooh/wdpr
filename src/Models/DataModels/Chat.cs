@@ -8,10 +8,19 @@ namespace Models {
         public int Id {get; set;}
         public string Naam {get; set;}
         public bool Actief {get; set;}
+
+    #nullable enable
         public Gebruiker ?Behandelaar {get; set;}
+    #nullable disable
+
         public ICollection<Bericht> Berichten { get; set; }
         public ICollection<Deelname> Deelnames { get; set; }
+
+    
+    #nullable enable
         public int ?ZelfhulpgroepInt {get; set;}
+    #nullable disable
+    
         public Zelfhulpgroep Zelfhulpgroep {get; set;}
 
         public string ChatNaam(Gebruiker gebruiker)

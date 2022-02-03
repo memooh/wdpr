@@ -24,8 +24,61 @@ public class KliniekContext : IdentityDbContext<Gebruiker>
         {
             base.OnModelCreating(builder);
 
-            builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "Voogd", NormalizedName = "Voogd", Id = Guid.NewGuid().ToString(), ConcurrencyStamp = Guid.NewGuid().ToString() });
-            builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "Client", NormalizedName = "Client", Id = Guid.NewGuid().ToString(), ConcurrencyStamp = Guid.NewGuid().ToString() });
+            builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "Voogd", NormalizedName = "Voogd", Id = "fb8be9c0-aa65-4af8-bd17-00bd9344e575", ConcurrencyStamp = Guid.NewGuid().ToString() });
+            builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "Client", NormalizedName = "Client", Id = "fc8be9c0-aa65-4af8-bd17-00bd9344e575", ConcurrencyStamp = Guid.NewGuid().ToString() });
+            builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "Behandelaar", NormalizedName = "Behandelaar", Id = "fd8be9c0-aa65-4af8-bd17-00bd9344e575", ConcurrencyStamp = Guid.NewGuid().ToString() });
+            builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "Moderator", NormalizedName = "Moderator", Id = "fe8be9c0-aa65-4af8-bd17-00bd9344e575", ConcurrencyStamp = Guid.NewGuid().ToString() });
+
+            var hasher = new PasswordHasher<Gebruiker>();
+
+            builder.Entity<Gebruiker>().HasData(new Gebruiker
+            {
+                Id = "ub8be9c0-aa65-4af8-bd17-00bd9344e575",
+                UserName = "moderator@test.nl",
+                NormalizedUserName = "moderator@test.nl",
+                Email = "moderator@test.nl",
+                NormalizedEmail = "moderator@test.nl",
+                EmailConfirmed = true,
+                PasswordHash = hasher.HashPassword(null, "Test12!"),
+                SecurityStamp = string.Empty,
+                Voornaam = "Moderator",
+                Achternaam = "Account",
+                IsActief = true,
+                Geboortedatum = new DateTime(2000, 12, 31, 5, 10, 20)
+            });
+
+            builder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
+            {
+                RoleId = "fd8be9c0-aa65-4af8-bd17-00bd9344e575",
+                UserId = "ub8be9c0-aa65-4af8-bd17-00bd9344e575"
+            });
+
+            builder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
+            {
+                RoleId = "fe8be9c0-aa65-4af8-bd17-00bd9344e575",
+                UserId = "ub8be9c0-aa65-4af8-bd17-00bd9344e575"
+            });
+
+            builder.Entity<Behandeling>().HasData(new Behandeling
+            {
+                Id = 1,
+                Naam = "ADHD",
+                Beschrijving = "Het oplossen en behandelen van je ADHD"
+            });
+
+            builder.Entity<Behandeling>().HasData(new Behandeling
+            {
+                Id = 2,
+                Naam = "Paniekaanvallen",
+                Beschrijving = "Ook last van paniekaanvallen? Dit kan heel veel probleme veroorzaken"
+            });
+
+            builder.Entity<Behandeling>().HasData(new Behandeling
+            {
+                Id = 3,
+                Naam = "Autisme",
+                Beschrijving = "Het behandelen van autisme is erg zwaar, hiervoor is veel aandacht nodig"
+            });
 
             builder.Entity<Chat>()
             .HasOne(a => a.Zelfhulpgroep)
