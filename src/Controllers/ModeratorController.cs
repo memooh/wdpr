@@ -10,7 +10,7 @@ using Models;
 
 namespace wdpr.Controllers
 {
-    // [Authorize(Roles = "Moderator")]
+    [Authorize(Roles = "Moderator, Behandelaar")]
     public class ModeratorController : Controller
     {
         private readonly KliniekContext _context;
@@ -71,43 +71,70 @@ namespace wdpr.Controllers
         [HttpGet]
         public async Task<IActionResult> GenereerAccount(BlokkeerModel blokkeerModel)
         {
-            Aanmelding aanmelding = _context.Aanmeldingen.Single(a => a.Id == blokkeerModel.Id);
-            
-            Gebruiker gebruiker = new Gebruiker
+            Aanmelding aanmelding = _context.Aanmeldingen.Include(a => a.Behandelaar).Single(a => a.Id == blokkeerModel.Id);
+
+            if (!_context.Gebruikers.Any(g => g.Email == aanmelding.Email))
             {
-                UserName = aanmelding.Gebruikersnaam,
-                Email = aanmelding.Gebruikersnaam,
-            };
 
-            aanmelding.HeeftAccount = true;
+                Gebruiker gebruiker = new Gebruiker
+                {
+                    UserName = aanmelding.Email,
+                    Email = aanmelding.Email,
+                    Voornaam = aanmelding.Voornaam,
+                    Achternaam = aanmelding.Achternaam,
+                    Adres = aanmelding.Adres,
+                    Postcode = aanmelding.Postcode,
+                    Woonplaats = aanmelding.Woonplaats,
+                    IsActief = true
+                };
 
-            await _userManager.CreateAsync(gebruiker, aanmelding.GenereerWachtwoord());
+                aanmelding.HeeftAccount = true;
+
+                await _userManager.CreateAsync(gebruiker, aanmelding.GenereerWachtwoord());
+
+                await GenereerChats(aanmelding.Behandelaar, gebruiker);
+
+                await _context.SaveChangesAsync();
+            }
 
             return RedirectToAction(nameof(Index));
         }
+
+
+        public async Task GenereerChats(Gebruiker HuidigeGebruiker, Gebruiker GekozenGebruiker)
+        {
+            Chat NieuweChat = new Chat
+            {
+                Naam = "Chat met " + HuidigeGebruiker.Email,
+                Actief = true,
+                Behandelaar = GekozenGebruiker,
+                Zelfhulpgroep = null
+            };
+
+            _context.Chats.Add(NieuweChat);
+
+            _context.Deelnames.Add(new Deelname
+            {
+                Chat = NieuweChat,
+                Client = await _userManager.GetUserAsync(HttpContext.User),
+                Geblokkeerd = false,
+                Toetredingsdatum = new DateTime()
+            });
+
+            _context.Deelnames.Add(new Deelname
+            {
+                Chat = NieuweChat,
+                Client = GekozenGebruiker,
+                Geblokkeerd = false,
+                Toetredingsdatum = new DateTime()
+            });
+        }
+
         [HttpPost]
         public async Task Blokkeer([FromBody] BlokkeerModel blokkeerModel) {
             Deelname deelname = await _context.Deelnames.SingleAsync(d => d.Id == blokkeerModel.Id);
             deelname.Geblokkeerd = deelname.Geblokkeerd ? false : true;
             await _context.SaveChangesAsync(); 
-        }
-
-
-        public async Task<IActionResult> overzichtBehandelaars()
-        {
-            List<Gebruiker> gebruikers = await _context.Gebruikers.Include(g => g.Behandelingen).ThenInclude(g => g.Behandeling).ToListAsync();
-            List<Gebruiker> behandelaars = new List<Gebruiker>();
-
-            foreach (var item in gebruikers)
-            {   
-               foreach (var rol in await _userManager.GetRolesAsync(item))
-               {
-                    if(rol == "Behandelaar")
-                        behandelaars.Add(item);
-               }
-            }
-
-            return View(behandelaars);
         }
     }
 }

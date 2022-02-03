@@ -17,11 +17,13 @@ namespace wdpr.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly KliniekContext _context;
         private readonly UserManager<Gebruiker> _userManager;
-        public HomeController(ILogger<HomeController> logger, KliniekContext kliniekContext, UserManager<Gebruiker> userManager)
+        private readonly SignInManager<Gebruiker> _signInManager;
+        public HomeController(ILogger<HomeController> logger, KliniekContext kliniekContext, UserManager<Gebruiker> userManager, SignInManager<Gebruiker> signInManager)
         {
             _logger = logger;
             _context = kliniekContext;
             _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         public IActionResult Index()
@@ -74,7 +76,6 @@ namespace wdpr.Controllers
 
                 _context.SaveChanges();
 
-                return RedirectToAction(nameof(ChatTest));
             }
             List<Deelname> Chats = await _context.Deelnames
                                                 .Include(d => d.Chat)
@@ -87,15 +88,15 @@ namespace wdpr.Controllers
             return View(new ChatViewModel(Chats, _userManager, HuidigeGebruiker));
         }
         
-        public async Task<IActionResult> LeeftijdVragenAanmelden(){
+        public IActionResult LeeftijdVragenAanmelden(){
             return View();
         }
 
-        public async Task<IActionResult> Diensten(){
+        public IActionResult Klachten(){
             return View();
         }
-
-        public async Task<IActionResult> OverOns(int AanmeldingsId){
+    
+        public IActionResult OverOns(int AanmeldingsId){
             return View();
         }
     }

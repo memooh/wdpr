@@ -4,6 +4,7 @@ namespace Models {
     public class Behandeling : IBehandeling {
         public int Id {get; set;}
         public string Naam {get; set;}
+        public string Beschrijving {get; set;}
         public ICollection<Behandeld> Behandelaren {get; set;}
     }
 }

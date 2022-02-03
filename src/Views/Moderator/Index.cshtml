@@ -16,7 +16,7 @@
             <td>@Html.DisplayFor(c => item.Naam)</td>
             <td>@item.Deelnames.Count() 
             </td>
-            <td>@if(@item.Zelfhulpgroep != null) { <p>Ja</p> } else { <p>Nee</p> }</td>
+            <td>@if(@item.ZelfhulpgroepInt != null) { <p>Ja</p> } else { <p>Nee</p> }</td>
             <td><a asp-controller="Moderator" asp-action="Inzien" asp-route-Id="@item.Id">Inzien</a></td>
         </tr>
     }

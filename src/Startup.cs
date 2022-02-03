@@ -35,7 +35,7 @@ namespace wdpr
                 .AddDefaultTokenProviders()
                 .AddDefaultUI();
             services.AddDbContext<KliniekContext>(options =>
-                    options.UseSqlite(Configuration.GetConnectionString("KliniekContext")));
+                    options.UseSqlServer(Configuration.GetConnectionString("Default")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

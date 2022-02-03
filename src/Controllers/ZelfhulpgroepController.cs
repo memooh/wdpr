@@ -24,20 +24,19 @@ namespace wdpr.Controllers
         }
 
         // GET: Zelfhulpgroep
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(string titel, string leeftijd)
         {
+            var zelfhulpgroepen = _context.Zelfhulpgroepen.Include(z => z.ZelfhulpDeelnames).ThenInclude(z => z.Client).AsNoTracking();
 
-            var person = from p in _context.Zelfhulpgroepen select p;
+            ViewBag.Titel = titel;
+            ViewBag.Leeftijd = leeftijd;
 
-            ViewBag.CurrentFilter = searchString;
-
-            if (!String.IsNullOrEmpty(searchString))
+            if (!String.IsNullOrEmpty(titel) || !String.IsNullOrEmpty(leeftijd))
             {
-                person = person.Where(s => s.Naam.Contains(searchString) || s.avgLeeftijd.Contains(searchString));
+                zelfhulpgroepen = zelfhulpgroepen.Where(s => s.Naam.Contains(titel) || s.avgLeeftijd.Contains(leeftijd));
             }
-                
-            return View(person.ToList());
-        
+
+            return View(await zelfhulpgroepen.ToListAsync());
         }
 
         // GET: Zelfhulpgroep/Details/5
@@ -77,7 +76,7 @@ namespace wdpr.Controllers
                     Toetredingsdatum = new DateTime()
                 });
                 
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
 
             return RedirectToAction(nameof(Index));
@@ -103,10 +102,11 @@ namespace wdpr.Controllers
                 var CurrentUser = await _userManager.GetUserAsync(HttpContext.User);
 
                 _context.Add(zelfhulpgroep);
-
+                await _context.SaveChangesAsync();
                 Chat chat = new Chat {
                     Naam = zelfhulpgroep.Naam,
-                    ZelfhulpgroepInt = zelfhulpgroep.Id
+                    ZelfhulpgroepInt = zelfhulpgroep.Id,
+                    Actief = true
                 };
 
                 _context.Chats.Add(chat);
@@ -202,7 +202,32 @@ namespace wdpr.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var zelfhulpgroep = await _context.Zelfhulpgroepen.FindAsync(id);
+            var zelfhulpgroep = await _context.Zelfhulpgroepen.Include(d => d.ZelfhulpDeelnames).SingleAsync(z => z.Id == id);
+            var deelnames = await _context.Deelnames
+                                  .Include(d => d.Chat)
+                                  .ThenInclude(c => c.Zelfhulpgroep)
+                                  .Include(d => d.Chat)
+                                  .ThenInclude(c => c.Deelnames)
+                                  .ThenInclude(c => c.Berichten)
+                                  .Where(d => d.Chat.ZelfhulpgroepInt == id)
+                                  .ToListAsync();
+
+            foreach (var item in deelnames)
+            {
+                foreach (var bericht in item.Berichten)
+                {
+                    _context.Berichten.Remove(bericht);
+                }
+                _context.Deelnames.Remove(item);
+            }
+
+            foreach (var item in zelfhulpgroep.ZelfhulpDeelnames)
+            {
+                _context.ZelfhulpDeelnames.Remove(item);
+            }
+
+            _context.Chats.Remove(zelfhulpgroep.Chat);
+
             _context.Zelfhulpgroepen.Remove(zelfhulpgroep);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

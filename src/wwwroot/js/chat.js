@@ -143,12 +143,12 @@ function GenerateMessageBlob(obj) {
     var innerHTML = 
         `<p class="text-${leftOrRight}"> ${obj.isVerzender ? 'U' : obj.verzender}
         <div class="card d-inline-block float-${leftOrRight}" style="background-color: ${obj.isVerzender ? 'white' : 'lightgray'};">`;
-        
     if(!obj.isVerzender) {
         innerHTML += 
         `<a class="report" onclick="javascript:void(0);"data-toggle="modal" data-target="#exampleModal">
-        <i class="fas fa-bug" data-report-id="${obj.berichtId}" style="position: absolute;left: 88%;bottom: 83%;font-size: 20px; cursor: pointer;"></i>
+        <i class="fas fa-bug" data-report-id="${obj.berichtId}" style="position: absolute;left: 88%;bottom: 83%;font-size: 20px; cursor: pointer;">Meld</i>
         </a>`;
+        console.log(innerHTML);
     }
 
     innerHTML += `    

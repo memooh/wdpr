@@ -1,0 +1,111 @@
+@using Microsoft.AspNetCore.Identity
+
+@model AanmeldenAlsClient
+@inject UserManager<Gebruiker> UserManager
+
+@{
+    ViewData["Title"] = "Gegevens";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h4>@ViewData["Title"]</h4>
+        <hr />
+        @if (User.Identity.IsAuthenticated && User.IsInRole("Voogd"))
+        {
+            <div id="content" class="row mb-2">
+                <div class="col-md-12">
+                    <p>Selecteer een client om <span class="font-weight-bold">automatisch</span> aan te melden</p>
+                </div>
+                @foreach (var item in Model.Clienten)
+                {
+                    <div class="col-md-4">
+                        <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                            <div class="card-body d-flex flex-column align-items-start">
+                                <h5 class="mb-0">
+                                    <p class="text-dark">@item.Voornaam @item.Achternaam</p>
+                                </h5>
+                                <a asp-route-BehandelingId="@ViewData["BehandelingId"]"
+                            asp-route-BehandelaarId="@ViewData["BehandelaarId"]" asp-route-VoogdijId="@item.Id"
+                            asp-action="SelecteerClient">Selecteren</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        @if (!User.IsInRole("Voogd") && User.Identity.IsAuthenticated && !Model.HasApplied)
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text">Ik wil mezelf aanmelden</p>
+                            <a asp-controller="Aanmelding" asp-action="SelecteerClient"
+                                asp-route-BehandelingId="@ViewData["BehandelingId"]" asp-route-BehandelaarId="@ViewData["BehandelaarId"]" asp-route-VoogdijId="@UserManager.GetUserId(User)"  class="card-link">Aanmelden</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Handmatig aanmelden voor client zonder account</h5>
+                            <form method="post">
+                                <div asp-validation-summary="All" class="text-danger"></div>
+                                <div class="form-row">
+                                    <input asp-for="BehandelingId" class="form-control" />
+                                    <input asp-for="BehandelaarId" class="form-control" />
+                                    <div class="form-group col">
+                                        <label asp-for="Voornaam"></label>
+                                        <input asp-for="Voornaam" class="form-control" />
+                                        <span asp-validation-for="Voornaam" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group col">
+                                        <label asp-for="Achternaam"></label>
+                                        <input asp-for="Achternaam" class="form-control" />
+                                        <span asp-validation-for="Achternaam" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col">
+                                        <label asp-for="Adres"></label>
+                                        <input asp-for="Adres" class="form-control" />
+                                        <span asp-validation-for="Adres" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group col">
+                                        <label asp-for="Postcode"></label>
+                                        <input asp-for="Postcode" class="form-control" />
+                                        <span asp-validation-for="Postcode" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group col">
+                                        <label asp-for="Woonplaats"></label>
+                                        <input asp-for="Woonplaats" class="form-control" />
+                                        <span asp-validation-for="Woonplaats" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col">
+                                        <label asp-for="Email"></label>
+                                        <input asp-for="Email" class="form-control" />
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group col">
+                                        <label asp-for="Geboortedatum"></label>
+                                        <input asp-for="Geboortedatum" class="form-control" />
+                                        <span asp-validation-for="Geboortedatum" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-block btn-primary">Aanmelden</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
